@@ -1,10 +1,7 @@
 package ua.com.foxminded.batchxlsprocessor.domain;
 
-import javax.validation.constraints.NotEmpty;
-
 public class Product {
 
-    @NotEmpty
     private String name;
     private double quantity;
 
