@@ -29,7 +29,7 @@ public class ItemWriterWrapper implements ItemWriter<Product>, Tasklet {
 	
 
 
-	@Override
+	@Override // MAP HERE
 	public void write(List<? extends Product> items) throws Exception {
 		
 		System.out.println("Received item: " + items);

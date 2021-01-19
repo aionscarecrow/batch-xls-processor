@@ -46,9 +46,6 @@ public class JobConfig {
 
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
-    
-//    @Autowired //HERE
-//    private ExecutionContext context;
 
     @Value("${file.input}")
     private String fileInput;
@@ -109,25 +106,14 @@ public class JobConfig {
     }
 
     @Bean
-//    public Step step1(FlatFileItemWriter<Product> writer, Step step2) {
     public Step step1(ItemWriterWrapper writer, Step step2) {
         TaskletStep step = stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(1)
                 .reader(reader())
                 .processor(validatingItemProcessor())
-//                .writer(writer())
                 .writer(writer)
-                
-//                .taskExecutor(new TaskExecutor() {
-//
-//					@Override
-//					public void execute(Runnable task) {
-//						System.out.println("Aaaand we execute the TaskExecutor(): " + Thread.currentThread().getName());
-//						
-//					}}
-//                )
                 .build();
-        
+        // HERE
         step.registerStepExecutionListener(new StepExecutionListener() {
 					@Override
 					public void beforeStep(StepExecution stepExecution) {}
@@ -135,20 +121,13 @@ public class JobConfig {
 					@Override
 					public ExitStatus afterStep(StepExecution stepExecution) {
 						System.out.println("From inside stepExecutionListener after step1");
-//						step2.setParameter(stepExecution.getExecutionContext().getString() // HOLD
-						System.out.println("Commit count: " + stepExecution.getCommitCount());
-						System.out.println(stepExecution.getSummary());
-						System.out.println(stepExecution.getFailureExceptions());
-						
-//						stepExecution.getExecutionContext().
 						
 						try {
-							
+							// BAD
 							writer.getClass().getDeclaredMethod("printContents", new Class[] {}).invoke(writer);
 						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
 								| NoSuchMethodException | SecurityException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.println("Ops!: " + e.getMessage());
 						}
 						
 						return ExitStatus.COMPLETED;
@@ -158,20 +137,9 @@ public class JobConfig {
         return step;
     }
     
-	/*
-	 * currentStep.registerStepExecutionListener(new StepExecutionListener() {
-	 * 
-	 * @Override public void beforeStep(StepExecution stepExecution) {}
-	 * 
-	 * @Override public ExitStatus afterStep(StepExecution stepExecution) {
-	 * nextStep.setParameter(stepExecution.getExecutionContext().getString(param)
-	 * return ExitStatus.COMPLETED; } });
-	 */
-    
     @Bean
     public Step step2(FlatFileItemWriter<Product> writer) {
     	return stepBuilderFactory.get("testStep")
-//    		.<Product, Product> chunk(1)
     		.tasklet(new Tasklet() {
 
 				@Override
@@ -182,17 +150,6 @@ public class JobConfig {
 				}
     			
     		})
-//            .taskExecutor(new TaskExecutor() {
-//
-//				@Override
-//				public void execute(Runnable task) {
-//					System.out.println("Aaaand we execute the TaskExecutor(): " + Thread.currentThread().getName());
-//					String stepKey = writer.getExecutionContextKey("step1");
-//					System.out.println(writer.);
-//					
-//					
-//				}}
-//            )
             .build();
     	
     }
