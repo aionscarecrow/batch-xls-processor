@@ -30,5 +30,6 @@ public class CustomSkipListener implements SkipListener<Product, Product> {
 
     @Override
     public void onSkipInProcess(Product o, Throwable throwable) {
+        LOGGER.error(throwable.getMessage());
     }
 }

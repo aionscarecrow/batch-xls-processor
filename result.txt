@@ -1,4 +1,3 @@
-Product{name='LBEL', quantity=36.6}
 Product{name='Lenscale Quailbrush', quantity=40.8}
 Product{name='DILTZAC', quantity=86.3}
 Product{name='Sandostatin', quantity=50.2}

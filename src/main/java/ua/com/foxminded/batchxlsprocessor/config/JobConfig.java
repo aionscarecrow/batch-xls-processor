@@ -16,6 +16,7 @@ import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
+import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -71,7 +72,7 @@ public class JobConfig {
     @Bean
     public ItemProcessor<Product, Product> validatingItemProcessor() {
         ValidatingItemProcessor<Product> validatingItemProcessor = new ValidatingItemProcessor<>(springValidator());
-        validatingItemProcessor.setFilter(true);
+        validatingItemProcessor.setFilter(false);
         return validatingItemProcessor;
     }
 
@@ -93,6 +94,7 @@ public class JobConfig {
                 .writer(writer())
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
+                .skip(ValidationException.class)
                 .skipLimit(SKIP_LIMIT)
                 .listener(skipListener)
                 .build();
