@@ -28,10 +28,23 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
-  <appender name="listener" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${current.log.folder}/listener.log</file>
+  <appender name="skipListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${current.log.folder}/parsingErrors.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-      <fileNamePattern>${archived.log.folder}/dao/dao-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <fileNamePattern>${archived.log.folder}/parsingErrors/parsingErrors-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+      <cleanHistoryOnStart>true</cleanHistoryOnStart>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${basic.pattern}</pattern>
+    </encoder>
+  </appender>
+  <appender name="jobCompletionListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${current.log.folder}/productSummary.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${archived.log.folder}/productSummary/productSummary-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
       <maxFileSize>100MB</maxFileSize>
       <maxHistory>30</maxHistory>
       <totalSizeCap>3GB</totalSizeCap>
@@ -44,8 +57,11 @@
   <logger name="org.springframework" level="info" additivity="false">
     <appender-ref ref="spring"/>
   </logger>
-  <logger name="ua.com.foxminded.batchxlsprocessor.listener" level="info" additivity="false">
-    <appender-ref ref="listener"/>
+  <logger name="ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener" level="info" additivity="false">
+    <appender-ref ref="skipListener"/>
+  </logger>
+  <logger name="ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener" level="info" additivity="false">
+    <appender-ref ref="jobCompletionListener"/>
   </logger>
   <root level="info">
     <appender-ref ref="server"/>
