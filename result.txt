@@ -1,4 +1,1020 @@
-Product{name='Валидол', quantity=100.0}
-Product{name='Цитрамон', quantity=250.0}
-Product{name='Цитрамон', quantity=120.0}
-Product{name='Ибупрофен', quantity=90.0}
+Product{name='Lenscale Quailbrush', quantity=40.8}
+Product{name='DILTZAC', quantity=86.3}
+Product{name='Sandostatin', quantity=50.2}
+Product{name='Three step hand care', quantity=30.3}
+Product{name='Venlafaxine', quantity=3.2}
+Product{name='FLUVIRIN', quantity=65.8}
+Product{name='PENTACEL', quantity=27.0}
+Product{name='Isopropyl Rubbing Alcohol', quantity=29.8}
+Product{name='SEROQUEL', quantity=88.9}
+Product{name='Antibacterial Hand Icy Mint', quantity=85.6}
+Product{name='PVP Scrub', quantity=31.7}
+Product{name='Hydrochlorothiazide', quantity=52.0}
+Product{name='Intermezzo', quantity=94.8}
+Product{name='AcipHex', quantity=38.5}
+Product{name='SUNBAR SPF 15', quantity=66.2}
+Product{name='AIR COMPRESSED', quantity=14.3}
+Product{name='Antispetic', quantity=8.1}
+Product{name='Furosemide', quantity=48.2}
+Product{name='Hypothalmu Stim', quantity=57.7}
+Product{name='RENOKIN LASH LASH', quantity=94.3}
+Product{name='NATRUM MURIATICUM', quantity=56.3}
+Product{name='NovoLog', quantity=63.8}
+Product{name='TOPIRAMATE', quantity=17.8}
+Product{name='Petroleum', quantity=78.7}
+Product{name='Magnesium Citrate', quantity=4.8}
+Product{name='Norco', quantity=45.2}
+Product{name='LOSARTAN POTASSIUM AND HYDROCHLOROTHIAZIDE', quantity=9.2}
+Product{name='PreviDent', quantity=21.9}
+Product{name='Tree Mixture', quantity=94.8}
+Product{name='Shopko Antibacterial Hand Sanitizer', quantity=82.2}
+Product{name='Animal Hair and Dander Allergy Relief', quantity=89.1}
+Product{name='Personal Care Creamy Petroleum Jelly', quantity=37.9}
+Product{name='good sense flu and severe cold and cough', quantity=79.0}
+Product{name='THIAMINE HYDROCHLORIDE', quantity=80.5}
+Product{name='Ranitidine', quantity=88.7}
+Product{name='Colgate', quantity=3.2}
+Product{name='Curvularia inequalis', quantity=24.0}
+Product{name='EnrichedFoam', quantity=60.1}
+Product{name='Penicillin V Potassium', quantity=55.0}
+Product{name='Ibuprofen', quantity=67.8}
+Product{name='Antibacterial Hand', quantity=78.7}
+Product{name='AZO', quantity=42.2}
+Product{name='BackAid', quantity=69.1}
+Product{name='Naso-Heel', quantity=87.0}
+Product{name='ARTEMISIA TRIDENTATA POLLEN', quantity=78.0}
+Product{name='Henry Schein Ibuprofen', quantity=78.8}
+Product{name='ACNE CLEANSING WIPES', quantity=46.3}
+Product{name='Ligatone', quantity=69.3}
+Product{name='Sodium Chloride', quantity=47.9}
+Product{name='Salt Cedar', quantity=4.0}
+Product{name='Hydrocodone Bitartrate and Acetaminophen', quantity=38.4}
+Product{name='Ketamine Hydrochloride', quantity=39.7}
+Product{name='Methylene Blue', quantity=89.7}
+Product{name='Nystatin', quantity=80.8}
+Product{name='Methyldopa', quantity=79.0}
+Product{name='Promethazine VC With Codeine', quantity=29.0}
+Product{name='Klor-Con', quantity=61.6}
+Product{name='tizanidine hydrochloride', quantity=66.4}
+Product{name='Bayberry', quantity=95.2}
+Product{name='Caduet', quantity=20.6}
+Product{name='Imipramine Hydrochloride', quantity=25.8}
+Product{name='ESIKA', quantity=88.3}
+Product{name='Thuja', quantity=2.9}
+Product{name='Oxymorphone hydrochloride', quantity=50.4}
+Product{name='Fluticasone Propionate', quantity=71.1}
+Product{name='Prednisone', quantity=91.2}
+Product{name='Symax Duotab', quantity=95.8}
+Product{name='Skin Corrective Innovative Skin Perfector BB Broad Spectrum SPF15 Sunscreen Light Medium', quantity=87.1}
+Product{name='TUMS', quantity=77.2}
+Product{name='Simvastatin', quantity=60.3}
+Product{name='Aspirin', quantity=73.0}
+Product{name='DOG HAIR AND EPITHELIA', quantity=3.0}
+Product{name='Cefadroxil', quantity=44.0}
+Product{name='Boscia BB SPF 27 PA', quantity=42.9}
+Product{name='CD DiorSnow UV Shield Transluscent - SPF50', quantity=76.9}
+Product{name='Mebendazole', quantity=79.8}
+Product{name='PROAIR', quantity=16.0}
+Product{name='Ciprofloxacin', quantity=54.4}
+Product{name='Cleocin Phosphate', quantity=15.7}
+Product{name='Clobex', quantity=31.3}
+Product{name='Sumatriptan Succinate', quantity=70.7}
+Product{name='METOPROLOL SUCCINATE', quantity=38.2}
+Product{name='Maximum Strength Flu HBP', quantity=72.9}
+Product{name='Pravastatin Sodium', quantity=56.1}
+Product{name='Fluaid', quantity=94.7}
+Product{name='Protamine Sulfate', quantity=33.5}
+Product{name='Proactiv Solution Oil Free Moisture SPF 15 Moisturizer', quantity=72.1}
+Product{name='Amlodipine Besylate', quantity=61.4}
+Product{name='Kroger Aloe Vera', quantity=50.5}
+Product{name='Hyperactivity - Mental Focus', quantity=68.5}
+Product{name='Digoxin', quantity=18.3}
+Product{name='OcuMend', quantity=51.1}
+Product{name='Denti-Care', quantity=96.4}
+Product{name='Acetaminophen', quantity=82.5}
+Product{name='flormar BB Sheer Tinted Beauty Sunscreen Broad Spectrum SPF 15 04 Medium Beige', quantity=8.4}
+Product{name='FORTAZ', quantity=44.7}
+Product{name='Codar', quantity=43.9}
+Product{name='TAMNAMO PLUS VITAL HAIR', quantity=71.8}
+Product{name='Rheumaforce', quantity=20.1}
+Product{name='Pollens - Trees, Eucalyptus (Blue Gum) Eucalyptus globulus', quantity=55.4}
+Product{name='Eve Lom Daily Protection Broad Spectrum SPF 50 Sunscreen', quantity=9.4}
+Product{name='HYDROCHLOROTHIAZIDE', quantity=68.9}
+Product{name='Jet Lag', quantity=54.4}
+Product{name='ARNICA MONTANA', quantity=39.2}
+Product{name='Citalopram', quantity=83.6}
+Product{name='Cotz Pediatric SPF 40', quantity=57.3}
+Product{name='healthy accents all day pain relief', quantity=69.2}
+Product{name='Daytime Multi-Symptom Cold Relief', quantity=23.1}
+Product{name='Furosemide', quantity=36.5}
+Product{name='Secret Natural Mineral', quantity=87.7}
+Product{name='DOCUSATE SODIUM', quantity=30.1}
+Product{name='Standardized Grass Pollen, Redtop', quantity=64.0}
+Product{name='LBEL', quantity=70.3}
+Product{name='Lamotrigine Extended Release', quantity=36.5}
+Product{name='Dulcolax', quantity=61.1}
+Product{name='Melissa Chamomilla', quantity=57.0}
+Product{name='Smart Sense Acid Reducer', quantity=49.7}
+Product{name='Losartan Potassium and Hydrochlorothiazide', quantity=69.2}
+Product{name='Omeprazole', quantity=72.4}
+Product{name='Meloxicam', quantity=54.6}
+Product{name='Cefotaxime', quantity=59.1}
+Product{name='Oraqix', quantity=2.5}
+Product{name='Denti-Care Denti-Rinse', quantity=40.3}
+Product{name='Divalproex Sodium', quantity=26.7}
+Product{name='eszopiclone', quantity=18.0}
+Product{name='Rite Aid Sport SunscreenSPF 30', quantity=61.0}
+Product{name='Vecuronium Bromide', quantity=96.2}
+Product{name='Anti Itch', quantity=39.4}
+Product{name='Oxytocin', quantity=53.8}
+Product{name='Clopidogrel', quantity=94.4}
+Product{name='EPANED', quantity=16.2}
+Product{name='LANOXIN', quantity=96.3}
+Product{name='Alcohol', quantity=42.2}
+Product{name='Dialyvite with Zinc', quantity=16.7}
+Product{name='Thermazene', quantity=67.9}
+Product{name='Rugby Nicotine Polacrilex Gum, Coated Cinnamon Flavor', quantity=47.3}
+Product{name='equaline allergy', quantity=49.4}
+Product{name='Heparin Sodium', quantity=1.4}
+Product{name='Preferred Plus Sinus', quantity=33.4}
+Product{name='Lidocaine Hydrochloride', quantity=8.6}
+Product{name='Furosemide', quantity=54.7}
+Product{name='No7 Lift and Luminate Foundation Sunscreen Broad Spectrum SPF 15 Chestnut', quantity=36.5}
+Product{name='Tussin DM', quantity=74.9}
+Product{name='Amlodipine besylate and benazepril hydrochloride', quantity=70.9}
+Product{name='SHADSCALE POLLEN', quantity=88.9}
+Product{name='Diltiazem Hydrochloride', quantity=42.0}
+Product{name='Labetalol hydrochloride', quantity=73.0}
+Product{name='FORTAZ', quantity=37.4}
+Product{name='Levetiracetam', quantity=95.6}
+Product{name='SENNA TIME', quantity=84.8}
+Product{name='Aveeno Active Naturals Positively Ageless Multidefense Daily Moisturizer', quantity=58.1}
+Product{name='Lisinopril', quantity=41.3}
+Product{name='L-Methyl-B6-B12', quantity=88.3}
+Product{name='Prednisone', quantity=96.5}
+Product{name='NITROGEN', quantity=83.4}
+Product{name='Depo-Provera', quantity=32.7}
+Product{name='Oxygen', quantity=48.1}
+Product{name='Coconut Vanilla Hand Sanitizer', quantity=66.0}
+Product{name='Oxcarbazepine', quantity=69.4}
+Product{name='Leader Pain Relief', quantity=87.1}
+Product{name='Sweet Fig Antibacterial Foaming Hand Wash', quantity=84.0}
+Product{name='Clearasil Daily Clear', quantity=78.3}
+Product{name='Purminerals 4 in 1 Makeup SPF 15 Blush Medium', quantity=26.1}
+Product{name='Good Neighbor Pharmacy Acid Reducer', quantity=30.3}
+Product{name='HYQVIA', quantity=40.8}
+Product{name='careone antacid', quantity=81.8}
+Product{name='AMRIX', quantity=26.7}
+Product{name='INSTANT HAND SANITIZER', quantity=56.9}
+Product{name='good neighbor pharmacy pain and fever', quantity=24.4}
+Product{name='Darkleaves Mugwort', quantity=33.2}
+Product{name='Guaiasorb DM', quantity=73.7}
+Product{name='Midazolam', quantity=11.6}
+Product{name='OrthoWash', quantity=31.3}
+Product{name='Family Dollar Antiseptic Mouth Rinse Blue Mint', quantity=73.1}
+Product{name='Alcohol Free HAND SANITIZER', quantity=12.5}
+Product{name='Cold and Hot Pain Relief', quantity=31.2}
+Product{name='Norpace', quantity=84.5}
+Product{name='healthy accents pain relief', quantity=51.4}
+Product{name='Good Neighbor Pharmacy ibuprofen', quantity=41.9}
+Product{name='Vancomycin Hydrochloride', quantity=45.2}
+Product{name='Salvax', quantity=81.4}
+Product{name='Sulindac', quantity=34.6}
+Product{name='Maximum Strength Laxative', quantity=42.1}
+Product{name='AZITHROMYCIN', quantity=77.7}
+Product{name='Givenchy Fluid Foundation Airy-light Mat Radiance SPF 20 Tint 8', quantity=34.1}
+Product{name='Clonazepam', quantity=69.6}
+Product{name='biochemistry PAIN RELIEF FOOT ACTIVE', quantity=2.8}
+Product{name='Ludens Wild Honey Throat Drops', quantity=63.5}
+Product{name='Metoclopramide Hydrochloride', quantity=47.9}
+Product{name='ADVATE', quantity=48.8}
+Product{name='Neurontin', quantity=99.5}
+Product{name='Short/Giant/Western Ragweed Mixture', quantity=54.5}
+Product{name='Tums', quantity=51.1}
+Product{name='DR DENTAL CARE 750ML', quantity=62.1}
+Product{name='Venlafaxine', quantity=80.9}
+Product{name='Fenofibrate', quantity=37.7}
+Product{name='Medi-Pads', quantity=86.7}
+Product{name='NP Thyroid 30', quantity=69.6}
+Product{name='Advanced relief', quantity=59.0}
+Product{name='Plus White Xtra Whitening', quantity=78.1}
+Product{name='Paroxetine', quantity=99.2}
+Product{name='Salicylic Acid', quantity=47.5}
+Product{name='Neutral Sodium Fluoride 0.2%', quantity=85.8}
+Product{name='True Beige Always color stay-on Makeup Broad Spectrum SPF 15', quantity=28.2}
+Product{name='Dexamethasone', quantity=7.3}
+Product{name='Sugar Maple', quantity=95.2}
+Product{name='sweet love hand sanitizer', quantity=95.8}
+Product{name='Cultivated Rye Grass', quantity=53.4}
+Product{name='Hay Fever', quantity=58.5}
+Product{name='Chlor-Tabs', quantity=69.8}
+Product{name='Tussin DM', quantity=31.1}
+Product{name='No7 Lifting and Firming Foundation Sunscreen SPF 15 Porcelain', quantity=8.1}
+Product{name='LBEL Couleur luxe rouge irresistible maximum hydration SPF 17', quantity=46.8}
+Product{name='Heartburn Relief', quantity=12.9}
+Product{name='Griseofulvin', quantity=55.2}
+Product{name='levocetirizine dihydrochloride', quantity=92.7}
+Product{name='Temazepam', quantity=69.0}
+Product{name='Ailanthus', quantity=95.1}
+Product{name='Oxygen', quantity=2.0}
+Product{name='Donnatal', quantity=30.3}
+Product{name='Hamamelis Aesculus Varicose Relief', quantity=20.0}
+Product{name='Nifedipine', quantity=93.5}
+Product{name='Velvet Grass', quantity=98.0}
+Product{name='Losartan Potassium', quantity=94.9}
+Product{name='Tramadol Hydrochloride and Acetaminophen', quantity=37.9}
+Product{name='Amlodipine Besylate and Benazepril Hydrochloride', quantity=83.6}
+Product{name='Hydrochlorothiazide', quantity=94.9}
+Product{name='topiramate', quantity=24.6}
+Product{name='ARTISTRY IDEAL RADIANCE UV Protect SPF 50 PLUS Broad Spectrum Sunscreen', quantity=29.5}
+Product{name='Axe Sharp Focus Invisible Solid', quantity=91.6}
+Product{name='Doxycycline Hyclate', quantity=65.9}
+Product{name='Triple Antibiotic Plus Pain Relief', quantity=18.1}
+Product{name='POLYCIN', quantity=99.4}
+Product{name='QUETIAPINE FUMARATE', quantity=58.4}
+Product{name='Peptic Relief Cherry', quantity=100.0}
+Product{name='Phisoderm Clear Confidence Daily Gel Face Wash', quantity=10.6}
+Product{name='BETHANECHOL CHLORIDE', quantity=22.7}
+Product{name='Micardis HCT', quantity=69.8}
+Product{name='good sense milk of magnesia', quantity=1.6}
+Product{name='DERMAL QUENCH CLEAR ANTI-ACNE TREATMENT', quantity=43.1}
+Product{name='Daily Moisturizing - Oatmeal', quantity=14.5}
+Product{name='OXYGEN', quantity=84.9}
+Product{name='Gabapentin', quantity=43.9}
+Product{name='itraconazole', quantity=16.5}
+Product{name='ACCURETIC', quantity=13.7}
+Product{name='Hydrochlorothiazide', quantity=15.0}
+Product{name='Stool Softener', quantity=93.9}
+Product{name='Nortriptyline Hydrochloride', quantity=84.1}
+Product{name='Anefrin Nasal', quantity=24.0}
+Product{name='Personal Care', quantity=15.9}
+Product{name='SENSAI FLUID FINISH FF202', quantity=96.0}
+Product{name='Helium Oxygen', quantity=80.6}
+Product{name='Red Alder', quantity=69.9}
+Product{name='Hemorrhoidal', quantity=45.2}
+Product{name='Cortisone Acetate', quantity=33.7}
+Product{name='Maalox Antacid', quantity=15.2}
+Product{name='HEADACHE', quantity=35.7}
+Product{name='Smart Sense Nicotine', quantity=73.7}
+Product{name='Pleo San Trich', quantity=77.6}
+Product{name='LACURA', quantity=27.1}
+Product{name='Alcohol', quantity=53.5}
+Product{name='AZACTAM', quantity=71.6}
+Product{name='CANIS LUPUS FAMILIARIS SKIN', quantity=29.0}
+Product{name='SCRUBS Solar Guard Sunscreen Wipe', quantity=22.0}
+Product{name='Nicotrol', quantity=1.6}
+Product{name='Cold Multi-Symptom Daytime Rapid Release', quantity=75.3}
+Product{name='Diltiazem Hydrochloride', quantity=26.0}
+Product{name='femhrt', quantity=62.6}
+Product{name='Zicam', quantity=6.6}
+Product{name='Dextrose', quantity=80.5}
+Product{name='CLARINS Broad Spectrum SPF 20 Super Restorative Tinted Tint 05', quantity=21.4}
+Product{name='Oxygen', quantity=64.6}
+Product{name='Lidocaine Hydrochloride and Epinephrine', quantity=58.6}
+Product{name='Multi-Symptom Cold Relief', quantity=46.7}
+Product{name='Psoriasin', quantity=16.1}
+Product{name='Losartan Potassium', quantity=65.1}
+Product{name='Metronidazole', quantity=92.8}
+Product{name='Namenda', quantity=37.4}
+Product{name='Regular Strength Pain Relief', quantity=49.8}
+Product{name='CAULIFLOWER', quantity=29.7}
+Product{name='flormar Foundation Sunscreen Broad Spectrum SPF 20 LF04 SOFT IVORY', quantity=81.9}
+Product{name='NovoSeven', quantity=51.2}
+Product{name='Terrasil Cold Sore Treatment', quantity=58.6}
+Product{name='Fluconazole', quantity=75.8}
+Product{name='Prevacid', quantity=59.3}
+Product{name='Allergy and Red Eye Relief', quantity=64.8}
+Product{name='Army Health Pain Reliever', quantity=66.5}
+Product{name='OCUFEN', quantity=59.2}
+Product{name='DAY CREAM REPLENISHING HYDRATOR', quantity=12.4}
+Product{name='Glipizide and Metformin Hydrochloride', quantity=71.1}
+Product{name='acetaminophen pm', quantity=66.0}
+Product{name='Savella', quantity=82.2}
+Product{name='SPF-40 facial moisturizer', quantity=95.8}
+Product{name='Gas Relief', quantity=97.9}
+Product{name='Kroger Baby', quantity=15.1}
+Product{name='oxycodone hydrochloride', quantity=37.9}
+Product{name='AMMONIUM LACTATE', quantity=46.2}
+Product{name='Tri-Estarylla', quantity=57.2}
+Product{name='LBEL EFFET PARFAIT Polvos Compactos de Larga Duracion para rostro FPS 15 /Long Lasting Compact SPF 15', quantity=23.2}
+Product{name='Colgate Junior Bubble Fruit', quantity=65.6}
+Product{name='Coast Maple', quantity=36.3}
+Product{name='LBEL EFFET PARFAIT DUAL-USE COMPACT YOUTHFUL LOOKING SKIN SPF7', quantity=67.2}
+Product{name='Cough', quantity=34.3}
+Product{name='Body Luxuries Coconut Vanilla Waterless Anti-bacterial Hand Sanitizer', quantity=69.2}
+Product{name='Xylocaine', quantity=17.5}
+Product{name='CD DIORSKIN STAR Studio Makeup Spectacular Brightening with sunscreen Broad Spectrum SPF30 060', quantity=38.1}
+Product{name='Injury/Trauma Complex', quantity=99.4}
+Product{name='White Poplar', quantity=73.7}
+Product{name='Hamster Epithelium', quantity=6.5}
+Product{name='Germicida', quantity=22.5}
+Product{name='Codituss DM', quantity=78.8}
+Product{name='careone childrens pain and fever', quantity=85.7}
+Product{name='Australian Gold', quantity=59.9}
+Product{name='Neutrogena MoistureShine SPF20', quantity=1.5}
+Product{name='Cerezyme', quantity=45.0}
+Product{name='Bisoprolol Fumarate and Hydrochlorothiazide', quantity=15.6}
+Product{name='Altipres', quantity=57.7}
+Product{name='Venlafaxine hydrochloride', quantity=49.0}
+Product{name='Famciclovir', quantity=70.8}
+Product{name='Dextroamphetamine Saccharate and Amphetamine Aspartate and Dextroamphetamine Sulfate and Amphetamine Sulfate', quantity=10.1}
+Product{name='Hydrocortisone', quantity=35.5}
+Product{name='Potassium Chloride', quantity=66.8}
+Product{name='Zyprexa', quantity=44.3}
+Product{name='Tag Alder Pollen', quantity=90.6}
+Product{name='Sumatriptan Succinate', quantity=42.7}
+Product{name='Aspirin', quantity=38.3}
+Product{name='Triamterene and Hydrochlorothiazide', quantity=23.4}
+Product{name='MuSkel-S', quantity=5.4}
+Product{name='Oil Free Acne Wash', quantity=29.7}
+Product{name='Quinidine Gluconate', quantity=5.1}
+Product{name='Amoxicillin', quantity=36.2}
+Product{name='DIOR SNOW PROTECTION UV', quantity=6.5}
+Product{name='Allergy Relief Now Hay Fever Remedy', quantity=36.5}
+Product{name='Clindamycin hydrochloride', quantity=18.7}
+Product{name='Mycophenolate Mofetil', quantity=11.0}
+Product{name='Venlafaxine Hydrochloride', quantity=63.6}
+Product{name='Handy Solutions Rubbing Alcohol', quantity=7.2}
+Product{name='Risperidone', quantity=85.6}
+Product{name='ESIKA', quantity=21.4}
+Product{name='dg health pain relief', quantity=53.6}
+Product{name='La Roche Posay Laboratoire Dermatologique Pigmentclar Daily Dark Spot Correcting Moisturizer Broad Spectrum SPF 30 Sunscreen', quantity=3.8}
+Product{name='Pain Relief Aspirin', quantity=74.7}
+Product{name='Fluorouracil', quantity=26.1}
+Product{name='Methimazole', quantity=31.8}
+Product{name='Carbidopa and Levodopa', quantity=44.2}
+Product{name='Fenoprofen', quantity=14.3}
+Product{name='Leader', quantity=14.1}
+Product{name='SkinCeuticals Physical Fusion UV Defense Broad Spectrum SPF 50 Sunscreen', quantity=90.3}
+Product{name='YES to coconut', quantity=12.8}
+Product{name='Nigrospora sphaerica', quantity=57.5}
+Product{name='Clinpro 5000', quantity=81.8}
+Product{name='Prednicarbate', quantity=4.4}
+Product{name='Pindolol', quantity=15.0}
+Product{name='Triamterene and Hydrochlorothiazide', quantity=81.3}
+Product{name='INFANTS ADVIL', quantity=31.5}
+Product{name='Levocarnitine', quantity=45.7}
+Product{name='Ranitidine', quantity=63.6}
+Product{name='LBEL divine lip gloss SPF 15', quantity=48.3}
+Product{name='Menstrual Complete', quantity=7.9}
+Product{name='PrismaSol', quantity=96.2}
+Product{name='MENOMUNE - A/C/Y/W-135 COMBINED', quantity=91.7}
+Product{name='Nicardipine HCl', quantity=83.4}
+Product{name='Haben Herb', quantity=70.7}
+Product{name='Molluscum Control', quantity=73.9}
+Product{name='Haloperidol', quantity=23.8}
+Product{name='WELLBUTRIN', quantity=26.0}
+Product{name='up and up', quantity=53.3}
+Product{name='Fenofibric Acid', quantity=91.6}
+Product{name='Alprazolam', quantity=4.0}
+Product{name='ShopRite Ni Calm', quantity=30.3}
+Product{name='Oxygen', quantity=24.5}
+Product{name='Justice Blue berry Scent ANTI BAC HAND SANITIZER', quantity=5.8}
+Product{name='Athletes Foot', quantity=23.4}
+Product{name='Argentum 8', quantity=73.4}
+Product{name='Metoprolol Tartrate', quantity=60.9}
+Product{name='Glycopyrrolate', quantity=81.3}
+Product{name='Pharbetol', quantity=11.6}
+Product{name='TRIHEXYPHENIDYL HYDROCHLORIDE', quantity=29.8}
+Product{name='Levetiracetam', quantity=82.5}
+Product{name='Little Colds Decongestant Plus Cough', quantity=33.9}
+Product{name='Pravastatin Sodium', quantity=65.7}
+Product{name='tramadol hydrochloride', quantity=14.5}
+Product{name='Amrix', quantity=48.1}
+Product{name='Risperidone', quantity=98.3}
+Product{name='Treatment Set TS330370', quantity=2.5}
+Product{name='Amyvid', quantity=65.4}
+Product{name='Hydrochlorothiazide', quantity=89.5}
+Product{name='Hydrocodone Bitartrate And Acetaminophen', quantity=91.9}
+Product{name='Atenolol and Chlorthalidone', quantity=98.0}
+Product{name='Intense Care Snail', quantity=41.7}
+Product{name='PLANTAGO LANCEOLATA POLLEN', quantity=85.6}
+Product{name='INSTANT HAND SANITIZER', quantity=80.0}
+Product{name='LISINOPRIL', quantity=59.8}
+Product{name='Trandolapril', quantity=87.7}
+Product{name='Toasted Vanilla Kit', quantity=80.7}
+Product{name='Hydrocortisone', quantity=93.1}
+Product{name='Lovastatin', quantity=91.9}
+Product{name='Moexipril Hydrochloride', quantity=90.6}
+Product{name='Prempro', quantity=8.1}
+Product{name='Icee White Cherry Scented Hand Sanitizer', quantity=73.5}
+Product{name='Venlafaxine', quantity=37.2}
+Product{name='Epinastine Hydrochloride', quantity=42.2}
+Product{name='Bisque Foundation SPF 20', quantity=66.7}
+Product{name='Dandelion Pollen', quantity=18.4}
+Product{name='Suphedrine PE', quantity=86.4}
+Product{name='SINGULAIR', quantity=84.1}
+Product{name='Diphenoxylate Hydrochloride and Atropine Sulfate', quantity=97.6}
+Product{name='Instant Hand Sanitizer', quantity=75.7}
+Product{name='BlancTis Essence', quantity=70.4}
+Product{name='Atovaquone and Proguanil Hydrochloride', quantity=99.6}
+Product{name='leader anti-diarrheal', quantity=35.9}
+Product{name='Toviaz', quantity=12.7}
+Product{name='flormar REBORN BB SUNSCREEN BROAD SPECTRUM SPF 30 CP19 Natural Beige', quantity=73.0}
+Product{name='Good Sense Fiber Laxative', quantity=64.6}
+Product{name='Ceftriaxone', quantity=56.6}
+Product{name='Gas Relief', quantity=34.0}
+Product{name='YOUTH SURGE', quantity=72.3}
+Product{name='KANKA', quantity=6.6}
+Product{name='INVANZ', quantity=16.7}
+Product{name='Maximum Strength Flu HBP', quantity=84.7}
+Product{name='Piroxicam', quantity=88.3}
+Product{name='E.O.L.', quantity=95.8}
+Product{name='RITUALS precious mineral foundation broad spectrum SPF 15 sunscreen SHADE 11', quantity=22.5}
+Product{name='Bayer Migraine Formula', quantity=73.2}
+Product{name='SUPER ORIGIN CUSHION COMPLETE CONTROL', quantity=62.1}
+Product{name='Ciprofloxacin Hydrochloride', quantity=54.5}
+Product{name='KE-53PS Hand Sanitizer', quantity=26.6}
+Product{name='FENOFIBRATE', quantity=67.8}
+Product{name='LET ME CLARIFY', quantity=86.5}
+Product{name='R-Gene', quantity=35.3}
+Product{name='Suntan Lotion', quantity=83.2}
+Product{name='Food - Plant Source, Peach Prunus persica', quantity=73.0}
+Product{name='SUNMARK COLD AND COUGH DM', quantity=91.3}
+Product{name='Cycloserine', quantity=86.1}
+Product{name='Risperidone', quantity=66.7}
+Product{name='venlafaxine', quantity=24.8}
+Product{name='Niravam', quantity=51.0}
+Product{name='Dicyclomine Hydrochloride', quantity=83.5}
+Product{name='Synthroid', quantity=41.4}
+Product{name='Ignatia Amara Kit Refill', quantity=82.5}
+Product{name='Simvastatin', quantity=62.7}
+Product{name='Your Logo Here Burn First Aid', quantity=51.0}
+Product{name='Etodolac', quantity=61.5}
+Product{name='Little Noses Decongestant Nose Drops', quantity=6.5}
+Product{name='Losartan Potassium', quantity=92.7}
+Product{name='ORCHID BY H E B', quantity=8.2}
+Product{name='Clindamycin Palmitate Hydrochloride', quantity=22.1}
+Product{name='Divalproex Sodium', quantity=40.8}
+Product{name='Lithium Carbonate', quantity=96.5}
+Product{name='Hydrochlorothiazide', quantity=40.4}
+Product{name='Nobacco Remedy Water', quantity=18.7}
+Product{name='Pistachio', quantity=53.7}
+Product{name='Benzonatate', quantity=4.4}
+Product{name='LidoPro', quantity=10.5}
+Product{name='Metoprolol tartrate', quantity=79.6}
+Product{name='Diltiazem Hydrochloride', quantity=1.5}
+Product{name='Methadone Hydrochloride', quantity=95.3}
+Product{name='Nitrogen', quantity=21.2}
+Product{name='AMOXICILLIN', quantity=13.6}
+Product{name='Anpitua Stim', quantity=75.5}
+Product{name='Diclofenac Sodium D/R', quantity=83.4}
+Product{name='lisinopril', quantity=73.6}
+Product{name='RABBIT', quantity=19.8}
+Product{name='Methadone Hydrochloride', quantity=71.1}
+Product{name='Etodolac', quantity=57.2}
+Product{name='Pentasa', quantity=75.5}
+Product{name='Lyrica', quantity=10.7}
+Product{name='Badger SPF 35 All Season Face', quantity=49.7}
+Product{name='Hydromorphone Hydrochloride', quantity=41.9}
+Product{name='Dorzolamide HCl', quantity=29.3}
+Product{name='Publix Sport', quantity=19.9}
+Product{name='Double Antibiotic', quantity=62.0}
+Product{name='SHISEIDO SUN PROTECTION FOUNDATION', quantity=18.8}
+Product{name='DG Health Gas Relief', quantity=58.0}
+Product{name='Phenobarbital', quantity=54.8}
+Product{name='cold relief', quantity=32.5}
+Product{name='Tasigna', quantity=17.4}
+Product{name='CLARINS HydraQuench Tinted Moisturizer Broad Spectrum SPF 6 01 NATUREL', quantity=51.3}
+Product{name='DayTime Cold and Flu', quantity=39.3}
+Product{name='Diphenhydramine Hydrochloride', quantity=30.4}
+Product{name='Levaquin', quantity=95.6}
+Product{name='Felodipine', quantity=15.2}
+Product{name='Dextrose', quantity=51.8}
+Product{name='Felbamate', quantity=32.2}
+Product{name='Warfarin Sodium', quantity=18.2}
+Product{name='Tolterodine Tartrate', quantity=28.8}
+Product{name='Morphine Sulfate', quantity=15.3}
+Product{name='ALPRAZOLAM', quantity=95.6}
+Product{name='Snowberry', quantity=40.8}
+Product{name='Ergocalciferol', quantity=4.7}
+Product{name='PUTTO ATO SECRET UV FACE', quantity=64.1}
+Product{name='Select Brand Tab Tussin', quantity=20.9}
+Product{name='cetirizine hydrochloride', quantity=82.6}
+Product{name='Divas', quantity=19.5}
+Product{name='Venlafaxine Hydrochloride', quantity=72.4}
+Product{name='FeverALL Infants', quantity=96.3}
+Product{name='Dutoprol', quantity=77.0}
+Product{name='HurriCaine', quantity=52.7}
+Product{name='Bioelements', quantity=14.0}
+Product{name='Australian Gold', quantity=73.8}
+Product{name='Cymbalta', quantity=96.5}
+Product{name='NAPROXEN', quantity=31.5}
+Product{name='Vida Mia Hand Sanitizer', quantity=16.8}
+Product{name='AVAGE', quantity=40.2}
+Product{name='Mango Blossom', quantity=16.0}
+Product{name='NEOMYCIN AND POLYMYXIN B SULFATES AND GRAMICIDIN', quantity=83.0}
+Product{name='allergy relief', quantity=67.2}
+Product{name='ALLERGY EYE DROPS', quantity=72.6}
+Product{name='Burkhart', quantity=18.9}
+Product{name='TAZICEF', quantity=15.0}
+Product{name='Minocycline Hydrochloride', quantity=27.0}
+Product{name='Carrington Antifungal', quantity=76.2}
+Product{name='Silver Ragweed Pollen', quantity=72.9}
+Product{name='Divalproex Sodium', quantity=14.3}
+Product{name='Virostat', quantity=22.6}
+Product{name='berkley and jensen nicotine', quantity=17.4}
+Product{name='ADVIL PM', quantity=13.7}
+Product{name='Pleo Sanuvis', quantity=59.0}
+Product{name='Alphanate', quantity=24.4}
+Product{name='Metoprolol Tartrate', quantity=60.0}
+Product{name='Citalopram', quantity=19.4}
+Product{name='Slenderiix', quantity=82.0}
+Product{name='Terazosin', quantity=88.3}
+Product{name='ERYTHROMYCIN', quantity=63.4}
+Product{name='Anticavity', quantity=2.8}
+Product{name='Methylphenidate Hydrochloride', quantity=1.5}
+Product{name='12 Hour Nasal', quantity=42.2}
+Product{name='FaLessa', quantity=95.5}
+Product{name='SINGULAIR', quantity=61.4}
+Product{name='Oxygen', quantity=30.0}
+Product{name='pain and fever', quantity=42.9}
+Product{name='TopCare Heartburn Relief', quantity=72.8}
+Product{name='Extra Strength Mapap', quantity=34.8}
+Product{name='Aspergillus repens', quantity=16.1}
+Product{name='Childrens TYLENOL', quantity=65.4}
+Product{name='Box Elder', quantity=95.2}
+Product{name='Tekamlo', quantity=29.6}
+Product{name='Ear Ringing', quantity=40.0}
+Product{name='Hydrogen Peroxide', quantity=87.5}
+Product{name='Lidocaine Hydrochloride', quantity=64.3}
+Product{name='Mixture of Standardized and Non-Standardized Southeastern Grasses', quantity=16.9}
+Product{name='Mirtazapine', quantity=54.7}
+Product{name='Carvedilol', quantity=93.8}
+Product{name='Aleve', quantity=41.2}
+Product{name='Trihexyphenidyl Hydrochloride', quantity=22.6}
+Product{name='INNOPRAN', quantity=36.0}
+Product{name='Nicotine', quantity=97.6}
+Product{name='L-Methyl MC NAC', quantity=60.9}
+Product{name='Coppertone Wet n Clear Kids', quantity=27.0}
+Product{name='Bamboo Rosemary', quantity=41.9}
+Product{name='aspirin', quantity=57.9}
+Product{name='Promethazine Hydrochloride', quantity=57.9}
+Product{name='Minocycline Hydrochloride', quantity=43.8}
+Product{name='Lamotrigine', quantity=12.1}
+Product{name='Nesina', quantity=9.2}
+Product{name='Lunesta', quantity=35.8}
+Product{name='mapap arthritis pain', quantity=82.6}
+Product{name='Hydroxyzine Hydrochloride', quantity=73.5}
+Product{name='LORCET PLUS', quantity=26.7}
+Product{name='Griseofulviin (microsize)', quantity=55.0}
+Product{name='Cladosporium herbarum', quantity=20.1}
+Product{name='Laser Sun Block 100 SPF50', quantity=35.6}
+Product{name='Lisinopril', quantity=27.3}
+Product{name='carboplatin', quantity=25.9}
+Product{name='Dollar General', quantity=65.1}
+Product{name='Benzonatate', quantity=15.7}
+Product{name='Rx Act all day pain relief', quantity=80.9}
+Product{name='Hydrochlorothiazide', quantity=47.0}
+Product{name='Atovaquone and Proguanil Hydrochloride', quantity=90.5}
+Product{name='ESIKA', quantity=10.5}
+Product{name='KLOR-CON M', quantity=44.6}
+Product{name='Suave', quantity=58.6}
+Product{name='Treatment Set TS330836', quantity=24.1}
+Product{name='MAJOR DOK Docusate Sodium', quantity=66.0}
+Product{name='Ultra Nutrition Toner', quantity=59.4}
+Product{name='Clotrimazole', quantity=15.9}
+Product{name='Ammonia N 13', quantity=62.8}
+Product{name='Glyburide', quantity=80.4}
+Product{name='Phentermine hydrochloride', quantity=20.0}
+Product{name='Nicotine', quantity=85.1}
+Product{name='Baclofen', quantity=20.3}
+Product{name='Childrens Loratadine', quantity=44.0}
+Product{name='SALICYLIC ACID', quantity=75.2}
+Product{name='Acetaminophen and Codeine Phosphate', quantity=97.7}
+Product{name='Hydromorphone Hydrochloride', quantity=5.9}
+Product{name='Penicillin G Potassium', quantity=80.7}
+Product{name='North Woods Germ Stuff', quantity=48.1}
+Product{name='Pantoprazole Sodium', quantity=99.8}
+Product{name='White Alder', quantity=98.9}
+Product{name='Enalapril Maleate', quantity=54.6}
+Product{name='Octreotide', quantity=66.0}
+Product{name='SUGAR FREE GREEN TEA WITH ECHINACEA COUGH SUPPRESSANT THROAT DROPS', quantity=40.4}
+Product{name='Varicose Veins', quantity=81.3}
+Product{name='Adidas', quantity=84.1}
+Product{name='MUCOR PLUMBEUS', quantity=33.8}
+Product{name='Orenitram', quantity=58.3}
+Product{name='Salmon', quantity=49.4}
+Product{name='berkley and jensen acid reducer', quantity=85.6}
+Product{name='Cacao Bean', quantity=17.2}
+Product{name='Daytime', quantity=56.8}
+Product{name='dg health pain relief pm', quantity=97.7}
+Product{name='HYDROCODONE BITARTRATE AND ACETAMINOPHEN', quantity=58.1}
+Product{name='ISTODAX', quantity=92.6}
+Product{name='Wal-Zan', quantity=97.5}
+Product{name='antacid', quantity=2.9}
+Product{name='Bisacodyl', quantity=73.9}
+Product{name='Solu-Medrol', quantity=41.7}
+Product{name='Treatment Set TS349274', quantity=58.7}
+Product{name='Neutrogena Men Triple Protect Face', quantity=57.9}
+Product{name='Gerbil Epithelium', quantity=33.2}
+Product{name='Clarins Rouge Hydra Nude - 01 Nude Rose', quantity=48.3}
+Product{name='Childrens Ibuprofen', quantity=30.5}
+Product{name='Neutrogena Healthy Defense Daily Moisturizer', quantity=24.8}
+Product{name='Antiseptic', quantity=25.1}
+Product{name='DaTscan', quantity=23.9}
+Product{name='Glipizide and Metformin Hydrochloride', quantity=75.4}
+Product{name='Hydrocodone Bitartrate and Acetaminophen', quantity=11.0}
+Product{name='Metoprolol Tartrate', quantity=5.4}
+Product{name='Fungicure', quantity=56.6}
+Product{name='Ampicillin', quantity=71.0}
+Product{name='Amiodarone Hydrochloride', quantity=63.8}
+Product{name='Alprazolam', quantity=70.4}
+Product{name='Lisinopril', quantity=50.7}
+Product{name='Diazepam', quantity=98.4}
+Product{name='Cymbalta', quantity=67.3}
+Product{name='SELENIUM SULFIDE', quantity=71.0}
+Product{name='Betadine', quantity=93.2}
+Product{name='METOPROLOL TARTRATE', quantity=57.6}
+Product{name='Gabapentin', quantity=85.3}
+Product{name='PCXX NEUTRAL FOAM BAZOOKA BUBBLEGUM', quantity=16.4}
+Product{name='Famotidine', quantity=73.7}
+Product{name='Select Brand Maximum Strength Urinary Pain Relief', quantity=70.5}
+Product{name='Medline Alcohol Prep', quantity=91.6}
+Product{name='Fenofibric Acid', quantity=76.0}
+Product{name='Antispetic', quantity=69.4}
+Product{name='No7 Stay Perfect Foundation Sunscreen SPF 15 Mocha', quantity=98.2}
+Product{name='Migraine Relief', quantity=35.9}
+Product{name='Herpes Sores', quantity=2.9}
+Product{name='Cetirizine Hydrochloride', quantity=6.8}
+Product{name='Nutmeg', quantity=8.8}
+Product{name='Maybelline New York Baby Lips Quenched Moisturizing Lip Balm SPF 20 Sunscreen', quantity=35.2}
+Product{name='SAD Soother', quantity=30.9}
+Product{name='PRILOSEC', quantity=89.9}
+Product{name='Hydrocodone Bitartrate and Acetaminophen', quantity=31.6}
+Product{name='Topcare Mucus Relief', quantity=8.6}
+Product{name='Divalproex sodium', quantity=71.2}
+Product{name='Secura Protective', quantity=10.3}
+Product{name='JUGLANS NIGRA POLLEN', quantity=30.1}
+Product{name='Viscum Populi', quantity=73.1}
+Product{name='EradiKate ACNE TREATMENT', quantity=14.7}
+Product{name='medroxyprogesterone acetate', quantity=12.6}
+Product{name='SUDAN GRASS POLLEN', quantity=73.9}
+Product{name='Biting Insect Antigens', quantity=61.9}
+Product{name='Smart Sense allergy and congestion relief', quantity=70.5}
+Product{name='No7 Protect and Perfect Foundation Sunscreen Broad Spectrum SPF 15 Cool Ivory', quantity=31.3}
+Product{name='Omeprazole', quantity=69.1}
+Product{name='BENICAR HCT', quantity=93.0}
+Product{name='Clindamycin in 5 Percent Dextrose', quantity=34.2}
+Product{name='Smarth', quantity=7.8}
+Product{name='EROS BODY GLIDE', quantity=44.0}
+Product{name='ABILIFY', quantity=92.8}
+Product{name='rHGH Complex', quantity=60.5}
+Product{name='Preferred Plus Severe Day Time', quantity=69.6}
+Product{name='Sodium Chloride', quantity=85.0}
+Product{name='care one acid reducer', quantity=19.1}
+Product{name='Creomulsion', quantity=1.1}
+Product{name='Octreotide acetate', quantity=90.6}
+Product{name='OXYCODONE HYDROCHLORIDE', quantity=14.7}
+Product{name='LYRICA', quantity=62.8}
+Product{name='Benzonatate', quantity=79.4}
+Product{name='Nabumetone', quantity=76.2}
+Product{name='Lithium Carbonate', quantity=18.9}
+Product{name='Australian Gold', quantity=18.0}
+Product{name='Ropinirole Hydrochloride', quantity=92.8}
+Product{name='Trazodone Hydrochloride', quantity=47.5}
+Product{name='Hang-Over Morning Mend', quantity=10.1}
+Product{name='IOPE SS', quantity=83.8}
+Product{name='Fresh Lavender Waterless Anti-Antibateria Hand Sanitizer', quantity=30.5}
+Product{name='Anti-Bacterial Gentle Foaming Hand', quantity=97.7}
+Product{name='APIUM GRAVEOLENS', quantity=56.9}
+Product{name='Egg Mix System Formula', quantity=24.1}
+Product{name='Fusarium compactum', quantity=49.5}
+Product{name='Fluconazole', quantity=15.8}
+Product{name='WOMENS LAXATIVE', quantity=77.3}
+Product{name='TOPCARE', quantity=12.1}
+Product{name='AfterBurn', quantity=91.1}
+Product{name='Maximum Strength Multi-Symptom Cold and Sinus', quantity=83.3}
+Product{name='NIFEDIPINE', quantity=23.4}
+Product{name='dg health mucus relief', quantity=89.8}
+Product{name='NARS ALL DAY LUMINOUS FOUNDATION', quantity=91.1}
+Product{name='California Mugwort', quantity=38.9}
+Product{name='Nabumetone', quantity=55.8}
+Product{name='BENICAR HCT', quantity=45.0}
+Product{name='Levonorgestrel', quantity=41.5}
+Product{name='ANESTHETIC', quantity=12.5}
+Product{name='Safe Harbor - Natural Sunscreen Face and Neck Cream Broad Spectrum SPF40 Sunscreen', quantity=94.5}
+Product{name='Boy Butter', quantity=64.8}
+Product{name='Equaline all day allergy', quantity=71.7}
+Product{name='Penicillin V Potassium', quantity=98.0}
+Product{name='TAPAZOLE', quantity=86.1}
+Product{name='Cenestin', quantity=42.0}
+Product{name='Pain Relieving Patch', quantity=27.4}
+Product{name='Lovastatin', quantity=23.0}
+Product{name='Lorazepam', quantity=48.5}
+Product{name='BP8 Cough', quantity=40.1}
+Product{name='SunScreen SPF30', quantity=93.2}
+Product{name='SOMAVERT', quantity=24.1}
+Product{name='Medi-First', quantity=26.0}
+Product{name='Hydrogen Peroxide', quantity=29.0}
+Product{name='CORTEF', quantity=11.9}
+Product{name='Pollens - Trees, Pine Mix', quantity=13.6}
+Product{name='Rimmel London', quantity=14.6}
+Product{name='Suphedrine PE', quantity=67.2}
+Product{name='Anti Itch Balm', quantity=62.0}
+Product{name='Butalbital, Acetaminophen, and Caffeine', quantity=52.9}
+Product{name='Estradiol', quantity=25.0}
+Product{name='LBEL EFFET PARFAIT Spots Reducing Effect Foundation SPF 18 - OBSCURE 8A', quantity=39.2}
+Product{name='Furosemide', quantity=64.7}
+Product{name='Venlafaxine Hydrochloride', quantity=49.3}
+Product{name='pravastatin sodium', quantity=47.0}
+Product{name='SMITH BROS NON-DROWSY MULTI-SYMPTOM COLD and FLU', quantity=60.1}
+Product{name='Flurazepam Hydrochloride', quantity=88.8}
+Product{name='CONCERTA', quantity=47.4}
+Product{name='Amoxicillin', quantity=40.8}
+Product{name='Treatment Set TS348402', quantity=18.9}
+Product{name='GRANIX', quantity=76.4}
+Product{name='Octopamine', quantity=23.1}
+Product{name='Equaline Stomach Relief', quantity=78.2}
+Product{name='Sandostatin LAR Depot', quantity=72.7}
+Product{name='OXYBUTYNIN CHLORIDE', quantity=43.4}
+Product{name='Mirtazapine', quantity=36.2}
+Product{name='Fosinopril Sodium', quantity=31.6}
+Product{name='PATANASE', quantity=66.2}
+Product{name='Head and Shoulders', quantity=28.6}
+Product{name='Glyburide', quantity=99.7}
+Product{name='Plumbum mellitum 8', quantity=67.1}
+Product{name='lisinopril', quantity=19.0}
+Product{name='Flurazepam Hydrochloride', quantity=92.9}
+Product{name='Fexofenadine Hydrochloride', quantity=15.8}
+Product{name='GODDESS GARDEN ORGANICS Sunny Body NATURAL SUNSCREEN BROAD SPECTRUM SPF 30 WATER RESISTANT', quantity=37.3}
+Product{name='Bumetanide', quantity=26.7}
+Product{name='Head and Shoulders', quantity=14.0}
+Product{name='Bull Frog Water Armor Super 40', quantity=24.7}
+Product{name='Terconazole', quantity=68.5}
+Product{name='healthy accents tussin dm', quantity=94.0}
+Product{name='CARVEDILOL', quantity=69.7}
+Product{name='No7 Lifting and Firming Foundation Sunscreen SPF 15 Porcelain', quantity=20.5}
+Product{name='APRIL Bath and Shower Anti-bacterial Hand 3 Pack', quantity=27.5}
+Product{name='Phylorinol', quantity=77.6}
+Product{name='Rivastigmine Tartrate', quantity=40.5}
+Product{name='No7 Beautiful Skin day Normal Dry Sunscreen Broad Spectrum SPF 15', quantity=26.8}
+Product{name='Prograf', quantity=28.4}
+Product{name='Nifedipine', quantity=71.2}
+Product{name='Maximum Strength Flu HBP', quantity=9.6}
+Product{name='Furosemide', quantity=45.7}
+Product{name='Vaporizing Chest', quantity=29.7}
+Product{name='Berberis Populus Adult Size', quantity=67.3}
+Product{name='Hormonal Headaches', quantity=82.9}
+Product{name='gas relief', quantity=35.6}
+Product{name='Tropicamide', quantity=32.0}
+Product{name='Leader Nicotine', quantity=25.9}
+Product{name='Fentanyl - NOVAPLUS', quantity=59.7}
+Product{name='XtraCare Skin Relief Oatmeal Daily Moisturizing', quantity=99.5}
+Product{name='Duetact', quantity=42.9}
+Product{name='Virustat', quantity=36.3}
+Product{name='Pussy Willow', quantity=86.2}
+Product{name='Nighttime Cold and Flu', quantity=43.0}
+Product{name='METHADONE HYDROCHLORIDE', quantity=25.9}
+Product{name='Divalproex Sodium', quantity=20.9}
+Product{name='FEM Remedy', quantity=52.2}
+Product{name='TUBERSOL', quantity=76.2}
+Product{name='Diclofenac sodium and Misoprostol', quantity=28.7}
+Product{name='No7 Protect and Perfect Day Sunscreen Broad Spectrum SPF 15', quantity=13.8}
+Product{name='PAROXETINE HYDROCHLORIDE', quantity=53.8}
+Product{name='Hydromorphone HCl', quantity=94.6}
+Product{name='Sodium Phosphates', quantity=97.2}
+Product{name='CELEBREX', quantity=81.5}
+Product{name='Donepezil Hydrochloride', quantity=26.9}
+Product{name='Nivea A Kiss of Cherry Fruity Lip Care', quantity=99.5}
+Product{name='IFEX', quantity=48.4}
+Product{name='XtraCare Creamy Petroleum Jelly', quantity=77.9}
+Product{name='CVS PHARMACY', quantity=14.9}
+Product{name='kaiser permanente benzoyl peroxide', quantity=96.7}
+Product{name='CPDA-1', quantity=62.0}
+Product{name='No7 Stay Perfect Foundation Sunscreen SPF 15 Mocha', quantity=15.6}
+Product{name='Quinapril', quantity=84.8}
+Product{name='Ampicillin and Sulbactam', quantity=73.8}
+Product{name='ATACAND HCT', quantity=4.2}
+Product{name='Flunisolide', quantity=39.0}
+Product{name='ANTHEMIS NOBILIS', quantity=40.7}
+Product{name='Gabapentin', quantity=27.8}
+Product{name='Throat and Chest Berry Menthol', quantity=59.6}
+Product{name='ANTIBACTERIAL FOAMING', quantity=3.1}
+Product{name='Ortho Tri Cyclen', quantity=54.4}
+Product{name='Duloxetine', quantity=9.4}
+Product{name='EXAPRIN', quantity=99.9}
+Product{name='Promethazine Hydrochloride', quantity=29.6}
+Product{name='Acyclovir', quantity=90.3}
+Product{name='Lisinopril and Hydrochlorothiazide', quantity=26.4}
+Product{name='NEURALGIA HEADACHE', quantity=13.6}
+Product{name='Diclofenac Sodium', quantity=60.4}
+Product{name='Mixed Vespid hymenoptera venom Venomil Maintenance', quantity=85.3}
+Product{name='Amoxicillin and Clavulanate Potassium', quantity=31.8}
+Product{name='hydrochlorothiazide', quantity=78.8}
+Product{name='Molluscum Control', quantity=30.2}
+Product{name='azithromycin', quantity=67.7}
+Product{name='PREPARATION H HYDROCORTISONE', quantity=38.5}
+Product{name='WhiskCare 375', quantity=35.3}
+Product{name='Pink Grape Fruit Waterless Anti-bacterial Hand Sanitizer', quantity=26.7}
+Product{name='Sertraline Hydrochloride', quantity=71.3}
+Product{name='nicotine', quantity=10.0}
+Product{name='Tums', quantity=92.3}
+Product{name='Bisoprolol Fumarate and Hydrochlorothiazide', quantity=5.3}
+Product{name='Hydromorphone Hydrochloride', quantity=68.4}
+Product{name='Lyrica', quantity=10.4}
+Product{name='Fentanyl', quantity=22.6}
+Product{name='Assured Gas Relief Extra Strength', quantity=70.6}
+Product{name='Lemon Verbena Waterless Hand Wash', quantity=93.4}
+Product{name='Hydroxychloroquine Sulfate', quantity=3.9}
+Product{name='Enoxaparin Sodium', quantity=49.5}
+Product{name='Kroger Baby', quantity=75.0}
+Product{name='Citalopram', quantity=36.8}
+Product{name='Natural Honey Lemon with Echinacea Cough Suppressant Throat Drops', quantity=69.1}
+Product{name='Loperamide Hydrochloride', quantity=53.8}
+Product{name='Melaleuca Pollen', quantity=27.2}
+Product{name='Buspirone Hydrochloride', quantity=31.7}
+Product{name='Vaporizing Chest Rub', quantity=50.1}
+Product{name='GPS Topical Anesthetic', quantity=1.6}
+Product{name='Safeway Instant Hand Sanitizing wipes', quantity=5.3}
+Product{name='Demeclocycline Hydrochloride', quantity=25.4}
+Product{name='GUNA-VENUS', quantity=51.8}
+Product{name='LOBSTER', quantity=37.1}
+Product{name='Colgate', quantity=40.0}
+Product{name='ADVAIRDISKUS', quantity=5.9}
+Product{name='RISPERDAL', quantity=29.4}
+Product{name='Revlimid', quantity=79.9}
+Product{name='Ancient Secrets', quantity=66.3}
+Product{name='ACETAMINOPHEN', quantity=36.3}
+Product{name='Ondansetron Hydrochloride', quantity=6.5}
+Product{name='Codeine Sulfate', quantity=60.3}
+Product{name='PerioMed', quantity=16.3}
+Product{name='Mannitol', quantity=10.6}
+Product{name='Neutrogena Pure and Free Baby Faces', quantity=94.0}
+Product{name='Topcare Cold and Allergy', quantity=31.3}
+Product{name='Levothyroxine Sodium', quantity=38.4}
+Product{name='COLDS RUNNY NOSE', quantity=39.7}
+Product{name='Hydrochlorothiazide', quantity=57.5}
+Product{name='Reed Therapeutics Pain Relieving Therapy', quantity=84.6}
+Product{name='Escitalopram', quantity=97.0}
+Product{name='Meperidine Hydrochloride', quantity=91.8}
+Product{name='Myco Nail A Antifungal Solution', quantity=21.8}
+Product{name='CAREONE INSTANT HAND SANITIZER WITH ALOE AND VITAMIN E', quantity=85.4}
+Product{name='Fenofibrate', quantity=41.7}
+Product{name='Sulfamethoxazole and Trimethoprim', quantity=89.5}
+Product{name='MISSHA ALL AROUND SAFE BLOCK SOFT FINISH SUN MILK', quantity=25.2}
+Product{name='healthy accents sore throat', quantity=51.1}
+Product{name='Muscle Ease', quantity=39.9}
+Product{name='Always Triple BB', quantity=53.4}
+Product{name='Doxycycline Hyclate', quantity=63.7}
+Product{name='Topiramate', quantity=74.9}
+Product{name='Pecan Nut Meat', quantity=76.1}
+Product{name='equate daytime', quantity=28.7}
+Product{name='Clonidine Hydrochloride', quantity=67.0}
+Product{name='Secura Total Body Foam Cleanser', quantity=71.1}
+Product{name='Phentermine Hydrochloride', quantity=73.8}
+Product{name='Olanzapine', quantity=90.0}
+Product{name='Up and Up Cough Suppressant DM', quantity=5.7}
+Product{name='SIMETHICONE', quantity=89.5}
+Product{name='Ziprasidone Hydrochloride', quantity=22.8}
+Product{name='Ibuprofen', quantity=18.1}
+Product{name='Enalapril Maleate', quantity=10.1}
+Product{name='Homeopathic Mental Alertness Formula', quantity=24.5}
+Product{name='ALNUS INCANA SSP RUGOSA POLLEN', quantity=1.7000000000000002}
+Product{name='TheradermSPF 43', quantity=66.0}
+Product{name='Hydrochlorothiazide', quantity=27.2}
+Product{name='Cephalexin', quantity=33.5}
+Product{name='Good Neighbor Pharmacy Triple Antibiotic', quantity=38.6}
+Product{name='Listerine Ultraclean Antiseptic', quantity=64.3}
+Product{name='BareMinerals Multi-Tasking SPF 20 Concealer', quantity=13.0}
+Product{name='CRH Medsense Simethicone 125mg Antigas', quantity=59.8}
+Product{name='LEVOTHYROXINE SODIUM', quantity=5.0}
+Product{name='HYDROCODONE BITARTRATE AND ACETAMINOPHEN', quantity=2.2}
+Product{name='Western Family Itch Relief', quantity=87.1}
+Product{name='Claritin-D', quantity=80.7}
+Product{name='Borago Nicotiana', quantity=2.1}
+Product{name='Gallic Acid', quantity=60.5}
+Product{name='Nitrogen', quantity=89.4}
+Product{name='Warfarin Sodium', quantity=12.1}
+Product{name='CLAM', quantity=36.7}
+Product{name='PHS Hair Science Pro Hair Loss Tonic', quantity=94.7}
+Product{name='Liver Complex', quantity=20.6}
+Product{name='LINGERIE DE PEAU INVISIBLE SKIN-FUSION FOUNDATION WITH SUNSCREEN BROAD SPECTRUM SPF 20 03 BEIGE NATUREL', quantity=6.7}
+Product{name='Verapamil Hydrochloride', quantity=73.3}
+Product{name='POTASSIUM CHLORIDE IN SODIUM CHLORIDE', quantity=8.4}
+Product{name='Food - Plant Source, Almond Prunus amygdalus', quantity=13.2}
+Product{name='Saltbush', quantity=36.7}
+Product{name='FaLessa', quantity=39.8}
+Product{name='Dreumex Omnicare Hand Sanitizer', quantity=9.7}
+Product{name='Amoxicillin', quantity=9.9}
+Product{name='Idarubicin Hydrochloride', quantity=73.8}
+Product{name='amlodipine besylate', quantity=15.9}
+Product{name='AZITHROMYCIN DIHYDRATE', quantity=36.5}
+Product{name='Sertraline Hydrochloride', quantity=48.9}
+Product{name='MECLIZINE HYDROCHLORIDE', quantity=97.6}
+Product{name='Amantadine Hydrochloride', quantity=65.7}
+Product{name='Pleo Pef', quantity=56.0}
+Product{name='Pure Finish Mineral Powder Foundation SPF 20 Pure Finish 10', quantity=93.6}
+Product{name='Sentraflox AM-10', quantity=57.7}
+Product{name='Zohydro', quantity=63.1}
+Product{name='Lithium Carbonate', quantity=17.2}
+Product{name='Zithromax', quantity=69.4}
+Product{name='Topical Fluoride Foam Bumble Bee Bubble Gum', quantity=14.7}
+Product{name='LISINOPRIL', quantity=15.8}
+Product{name='Epinastine Hydrochloride', quantity=47.0}
+Product{name='ESIKA', quantity=66.7}
+Product{name='INFANTS COUGH SYRUP', quantity=69.7}
+Product{name='HAMSOA DR ATOBY MIST', quantity=64.6}
+Product{name='BareMinerals', quantity=92.3}
+Product{name='Lorazepam', quantity=35.4}
+Product{name='Good Sense Nicotine', quantity=18.9}
+Product{name='Sciatic Rescue', quantity=94.9}
+Product{name='Triple Vitamin Drops with Fluoride', quantity=24.9}
+Product{name='Justice Grape Scent ANTI BAC HAND SANITIZER', quantity=42.3}
+Product{name='smart sense childrens pain relief', quantity=23.5}
+Product{name='Canadian Blue Grass', quantity=96.1}
+Product{name='Mirtazapine', quantity=32.7}
+Product{name='OXY Daily Moisturizer', quantity=10.1}
+Product{name='Phenazopyridine Hydrochloride', quantity=33.3}
+Product{name='Ultra-TechneKow', quantity=71.2}
+Product{name='Ketorolac Tromethamine', quantity=86.1}
+Product{name='Stomach Relief Anti Diarrheal', quantity=80.6}
+Product{name='Scrub', quantity=89.3}
+Product{name='Assured', quantity=28.5}
+Product{name='Hydralazine', quantity=86.6}
+Product{name='Everyday Clean Dandruff', quantity=78.4}
+Product{name='Long Last Makeup 01', quantity=26.9}
+Product{name='PredniSONE', quantity=87.7}
+Product{name='Extra Strength Acetaminophen', quantity=31.5}
+Product{name='Anti-Itch', quantity=60.3}
+Product{name='Oxazepam', quantity=6.8}
+Product{name='Treatment Set TS351200', quantity=84.6}
+Product{name='AeroGreen Antibac', quantity=32.9}
+Product{name='Hydrocortisone', quantity=89.6}
+Product{name='Actoplus Met', quantity=88.8}
+Product{name='Plavix', quantity=79.2}
+Product{name='Plavix', quantity=37.5}
+Product{name='ZUSKA', quantity=89.1}
+Product{name='Alcohol Prep', quantity=45.8}
+Product{name='Foaming Antimicrobial', quantity=6.3}
+Product{name='Amoeba Tox', quantity=18.6}
+Product{name='Anti-Bacterial Hand', quantity=95.3}
+Product{name='Carbidopa, levodopa and entacapone', quantity=86.0}
+Product{name='Acetazolamide', quantity=87.1}
+Product{name='Levetiracetam', quantity=59.5}
+Product{name='Standardized Grass Pollen, Bluegrass, Kentucky (June)', quantity=99.7}
+Product{name='OXYGEN', quantity=51.6}
+Product{name='Nuvigil', quantity=40.0}
+Product{name='LBEL', quantity=36.6}
+Product{name='Lenscale Quailbrush', quantity=40.8}
+Product{name='DILTZAC', quantity=86.3}
+Product{name='Sandostatin', quantity=50.2}
+Product{name='Three step hand care', quantity=30.3}
+Product{name='Venlafaxine', quantity=3.2}
+Product{name='FLUVIRIN', quantity=65.8}
+Product{name='PENTACEL', quantity=27.0}
+Product{name='Isopropyl Rubbing Alcohol', quantity=29.8}
+Product{name='SEROQUEL', quantity=88.9}
+Product{name='Antibacterial Hand Icy Mint', quantity=85.6}
+Product{name='PVP Scrub', quantity=31.7}
+Product{name='Hydrochlorothiazide', quantity=52.0}
+Product{name='Intermezzo', quantity=94.8}
+Product{name='AcipHex', quantity=38.5}
+Product{name='SUNBAR SPF 15', quantity=66.2}
+Product{name='AIR COMPRESSED', quantity=14.3}
+Product{name='Antispetic', quantity=8.1}
+Product{name='Furosemide', quantity=48.2}
+Product{name='Hypothalmu Stim', quantity=57.7}
+Product{name='RENOKIN LASH LASH', quantity=94.3}
+Product{name='NATRUM MURIATICUM', quantity=56.3}
+Product{name='NovoLog', quantity=63.8}
+Product{name='TOPIRAMATE', quantity=17.8}
+Product{name='Petroleum', quantity=78.7}
+Product{name='Magnesium Citrate', quantity=4.8}
+Product{name='INFANTS COUGH SYRUP', quantity=69.7}
+Product{name='HAMSOA DR ATOBY MIST', quantity=64.6}
+Product{name='BareMinerals', quantity=92.3}
+Product{name='Lorazepam', quantity=35.4}
+Product{name='Good Sense Nicotine', quantity=18.9}
+Product{name='Sciatic Rescue', quantity=94.9}
+Product{name='Triple Vitamin Drops with Fluoride', quantity=24.9}
+Product{name='Justice Grape Scent ANTI BAC HAND SANITIZER', quantity=42.3}
+Product{name='smart sense childrens pain relief', quantity=23.5}
+Product{name='Canadian Blue Grass', quantity=96.1}
+Product{name='Mirtazapine', quantity=32.7}
+Product{name='OXY Daily Moisturizer', quantity=10.1}
+Product{name='Phenazopyridine Hydrochloride', quantity=33.3}
+Product{name='Ultra-TechneKow', quantity=71.2}
+Product{name='Ketorolac Tromethamine', quantity=86.1}
+Product{name='Stomach Relief Anti Diarrheal', quantity=80.6}
+Product{name='Scrub', quantity=89.3}
+Product{name='Assured', quantity=28.5}
+Product{name='Hydralazine', quantity=86.6}
+Product{name='Everyday Clean Dandruff', quantity=78.4}
+Product{name='Long Last Makeup 01', quantity=26.9}
+Product{name='PredniSONE', quantity=87.7}
+Product{name='Extra Strength Acetaminophen', quantity=31.5}
+Product{name='Anti-Itch', quantity=60.3}
+Product{name='Oxazepam', quantity=6.8}
+Product{name='Treatment Set TS351200', quantity=84.6}
+Product{name='AeroGreen Antibac', quantity=32.9}
+Product{name='Hydrocortisone', quantity=89.6}
+Product{name='Actoplus Met', quantity=88.8}
+Product{name='Plavix', quantity=79.2}
+Product{name='Plavix', quantity=37.5}
+Product{name='ZUSKA', quantity=89.1}
+Product{name='Alcohol Prep', quantity=45.8}
+Product{name='Foaming Antimicrobial', quantity=6.3}
+Product{name='Amoeba Tox', quantity=18.6}
+Product{name='111_TEST_DRUG', quantity=5.0}
+Product{name='111_TEST_DRUG', quantity=20.0}

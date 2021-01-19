@@ -1,0 +1,53 @@
+<configuration packagingData="true">
+  <property name="current.log.folder" value="log/current"/>
+  <property name="archived.log.folder" value="log/archived"/>
+  <property name="basic.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+  <appender name="server" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${current.log.folder}/server.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${archived.log.folder}/server/server-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+      <cleanHistoryOnStart>true</cleanHistoryOnStart>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${basic.pattern}</pattern>
+    </encoder>
+  </appender>
+  <appender name="spring" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${current.log.folder}/spring.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${archived.log.folder}/spring/spring-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+      <cleanHistoryOnStart>true</cleanHistoryOnStart>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${basic.pattern}</pattern>
+    </encoder>
+  </appender>
+  <appender name="listener" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${current.log.folder}/listener.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${archived.log.folder}/dao/dao-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+      <cleanHistoryOnStart>true</cleanHistoryOnStart>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${basic.pattern}</pattern>
+    </encoder>
+  </appender>
+  <logger name="org.springframework" level="info" additivity="false">
+    <appender-ref ref="spring"/>
+  </logger>
+  <logger name="ua.com.foxminded.batchxlsprocessor.listener" level="info" additivity="false">
+    <appender-ref ref="listener"/>
+  </logger>
+  <root level="info">
+    <appender-ref ref="server"/>
+  </root>
+</configuration>
