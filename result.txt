@@ -1,4 +1,4 @@
-Product{name='Валидол', quantity=100.0}
-Product{name='Цитрамон', quantity=250.0}
-Product{name='Цитрамон', quantity=120.0}
-Product{name='Ибупрофен', quantity=90.0}
+Product{name='Drug1', quantity=12.0}
+Product{name='Drug2', quantity=7.0}
+Product{name='Drug3', quantity=54.0}
+Product{name='Drug1', quantity=100.0}
