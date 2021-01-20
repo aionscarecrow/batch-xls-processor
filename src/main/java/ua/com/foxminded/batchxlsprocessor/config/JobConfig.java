@@ -9,11 +9,9 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
-import org.springframework.batch.item.file.FlatFileItemWriter;
-import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
-import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
@@ -22,9 +20,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
+import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 
 @Configuration
@@ -36,9 +34,6 @@ public class JobConfig {
     @Value("${file.input}")
     private String fileInput;
 
-    @Value("${file.output}")
-    private String fileOutput;
-
     @Bean
     public ItemReader<Product> reader() {
         PoiItemReader<Product> reader = new PoiItemReader<>();
@@ -46,15 +41,6 @@ public class JobConfig {
         reader.setResource(new ClassPathResource(fileInput));
         reader.setRowMapper(new ProductExcelRowMapper());
         return reader;
-    }
-
-    @Bean
-    public FlatFileItemWriter<Product> writer() {
-        return new FlatFileItemWriterBuilder<Product>()
-                .name("productItemWriter")
-                .resource(new FileSystemResource(fileOutput))
-                .lineAggregator(new PassThroughLineAggregator<>())
-                .build();
     }
 
     @Bean
@@ -77,21 +63,25 @@ public class JobConfig {
     }
 
     @Bean
-    public Job job(Step step1, JobBuilderFactory jobBuilderFactory) {
+    public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
+                   JobCompletionNotificationListener listener) {
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
+                .listener(listener)
                 .flow(step1)
                 .end()
                 .build();
     }
 
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory, SkipListener<Product, Product> skipListener) {
+    public Step step1(StepBuilderFactory stepBuilderFactory,
+                      ItemWriter<Product> mapProductWriter,
+                      SkipListener<Product, Product> skipListener) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(1)
                 .reader(reader())
                 .processor(validatingItemProcessor())
-                .writer(writer())
+                .writer(mapProductWriter)
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
                 .skip(ValidationException.class)
