@@ -15,6 +15,8 @@ public class MapProductWriter implements ItemWriter<Product> {
 
     @Override
     public void write(List<? extends Product> list) throws Exception {
+    	System.out.println("Writer received list: " + list);
+    	
         for (Product product : list) {
             String name = product.getName();
             Double quantity = product.getQuantity();

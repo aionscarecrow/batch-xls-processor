@@ -12,6 +12,7 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
+import org.springframework.batch.item.support.SingleItemPeekableItemReader;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
@@ -24,6 +25,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
 import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
+import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
 
 @Configuration
 @EnableBatchProcessing
@@ -41,6 +43,20 @@ public class JobConfig {
         reader.setResource(new ClassPathResource(fileInput));
         reader.setRowMapper(new ProductExcelRowMapper());
         return reader;
+    }
+    
+    //HERE
+    @Bean
+    public SingleItemPeekableItemReader<Product> peekItemReader() {
+    	SingleItemPeekableItemReader<Product> reader = new SingleItemPeekableItemReader<>();
+    	reader.setDelegate(reader());
+    	return reader;
+    }
+    
+    //HERE
+    @Bean
+    public ItemProcessor<Product, Product> processor(SingleItemPeekableItemReader<Product> itemReader) {
+    	return new ProductProcessor(itemReader);
     }
 
     @Bean
@@ -78,9 +94,11 @@ public class JobConfig {
                       ItemWriter<Product> mapProductWriter,
                       SkipListener<Product, Product> skipListener) {
         return stepBuilderFactory.get("step1")
-                .<Product, Product> chunk(1)
-                .reader(reader())
-                .processor(validatingItemProcessor())
+                .<Product, Product> chunk(3) // HERE
+//                .reader(reader()) // HERE
+                .reader(peekItemReader())
+//                .processor(validatingItemProcessor()) //HERE
+                .processor(processor(peekItemReader()))
                 .writer(mapProductWriter)
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
