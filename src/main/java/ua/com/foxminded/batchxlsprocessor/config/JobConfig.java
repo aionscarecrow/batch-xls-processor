@@ -1,5 +1,6 @@
 package ua.com.foxminded.batchxlsprocessor.config;
 
+import org.springframework.batch.core.ItemProcessListener;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.SkipListener;
 import org.springframework.batch.core.Step;
@@ -7,6 +8,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.step.item.ChunkMonitor;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -22,8 +24,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
 import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
+import ua.com.foxminded.batchxlsprocessor.listener.ProductProcessListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
 
@@ -53,10 +57,13 @@ public class JobConfig {
     	return reader;
     }
     
+    //NOT HERE
+    
+    
     //HERE
     @Bean
     public ItemProcessor<Product, Product> processor(SingleItemPeekableItemReader<Product> itemReader) {
-    	return new ProductProcessor(itemReader);
+    	return new ProductProcessor(itemReader, chunkMonitor());
     }
 
     @Bean
@@ -77,10 +84,17 @@ public class JobConfig {
         validatingItemProcessor.setFilter(false);
         return validatingItemProcessor;
     }
+    
+    // HERE
+    @Bean
+    public ItemProcessListener<Product, Product> processListener() {
+    	ItemProcessListener<Product, Product> processListener = new ProductProcessListener();
+    	return processListener;
+    }
 
     @Bean
     public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
-                   JobCompletionNotificationListener listener) {
+			JobCompletionNotificationListener listener) {
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
@@ -88,11 +102,20 @@ public class JobConfig {
                 .end()
                 .build();
     }
+    
+    //HERE
+    @Bean
+    public ChunkMonitor chunkMonitor() {
+    	ChunkMonitor chunkMonitor = new ChunkMonitor();
+		chunkMonitor.registerItemStream(peekItemReader());
+		return chunkMonitor;
+    }
 
     @Bean
     public Step step1(StepBuilderFactory stepBuilderFactory,
                       ItemWriter<Product> mapProductWriter,
-                      SkipListener<Product, Product> skipListener) {
+                      SkipListener<Product, Product> skipListener, 
+                      ItemProcessListener<Product, Product> processListener /* HERE */) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(3) // HERE
 //                .reader(reader()) // HERE
@@ -105,6 +128,7 @@ public class JobConfig {
                 .skip(ValidationException.class)
                 .skipLimit(SKIP_LIMIT)
                 .listener(skipListener)
+                .listener(processListener)
                 .build();
     }
 }
