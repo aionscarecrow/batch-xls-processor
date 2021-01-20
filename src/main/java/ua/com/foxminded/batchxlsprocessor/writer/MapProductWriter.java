@@ -1,33 +1,31 @@
 package ua.com.foxminded.batchxlsprocessor.writer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
+import ua.com.foxminded.batchxlsprocessor.storage.ProductSummaryStorage;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Component
 public class MapProductWriter implements ItemWriter<Product> {
 
-    private final Map<String, Double> productSummary = new HashMap<>();
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(MapProductWriter.class);
+
+    @Autowired
+    private ProductSummaryStorage storage;
 
     @Override
     public void write(List<? extends Product> list) throws Exception {
-        for (Product product : list) {
-            String name = product.getName();
-            Double quantity = product.getQuantity();
-            if (!productSummary.containsKey(name)) {
-                productSummary.put(name, quantity);
-            } else {
-                Double updatedQuantity = productSummary.get(name) + quantity;
-                productSummary.put(name, updatedQuantity);
-            }
+        Set<Map.Entry<String, Double>> entries = storage.getProductSummary().entrySet();
+        for (Map.Entry<String, Double> entry : entries) {
+            LOGGER.info("{} - {}", entry.getKey(), entry.getValue());
         }
-    }
-
-    public Map<String, Double> getProductSummary() {
-        return productSummary;
     }
 }

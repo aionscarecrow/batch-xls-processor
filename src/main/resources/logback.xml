@@ -41,7 +41,7 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
-  <appender name="jobCompletionListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="writer" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/productSummary.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <fileNamePattern>${archived.log.folder}/productSummary/productSummary-%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
@@ -60,8 +60,8 @@
   <logger name="ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener" level="info" additivity="false">
     <appender-ref ref="skipListener"/>
   </logger>
-  <logger name="ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener" level="info" additivity="false">
-    <appender-ref ref="jobCompletionListener"/>
+  <logger name="ua.com.foxminded.batchxlsprocessor.writer" level="info" additivity="false">
+    <appender-ref ref="writer"/>
   </logger>
   <root level="info">
     <appender-ref ref="server"/>
