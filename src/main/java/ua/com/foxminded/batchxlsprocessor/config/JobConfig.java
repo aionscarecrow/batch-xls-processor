@@ -5,6 +5,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
@@ -28,6 +29,7 @@ import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationList
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
 import ua.com.foxminded.batchxlsprocessor.reader.ReaderExhaustedWrapper;
+import ua.com.foxminded.batchxlsprocessor.service.ProductGroupingService;
 import ua.com.foxminded.batchxlsprocessor.writer.ProductLogWriter;
 
 @Configuration
@@ -57,9 +59,10 @@ public class JobConfig {
 //    }
     
     @Bean("wrapper")
-    public ReaderExhaustedWrapper<Product> exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
-    	ReaderExhaustedWrapper<Product> wrapper =  new ReaderExhaustedWrapper<>();
-    	wrapper.setDelegate(wrapper);
+    @StepScope
+    public ReaderExhaustedWrapper exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
+    	ReaderExhaustedWrapper wrapper =  new ReaderExhaustedWrapper();
+    	wrapper.setDelegate(reader);
     	return wrapper;
     }
     
@@ -78,7 +81,7 @@ public class JobConfig {
     //HERE
     @Bean
     public ItemProcessor<Product, Product> productProcessor(
-    		@Qualifier("wrapper")ReaderExhaustedWrapper<Product> reader, 
+    		@Qualifier("wrapper")ReaderExhaustedWrapper reader, 
     		@Qualifier("logWriter")ItemWriter<Product> writer) {
 //    	return new ProductProcessor(exhaustedWrapper(reader()), productLogWriter());
     	return new ProductProcessor(reader, writer);
@@ -94,6 +97,11 @@ public class JobConfig {
         SpringValidator<Product> springValidator = new SpringValidator<>();
         springValidator.setValidator(validator());
         return springValidator;
+    }
+    
+    @Bean
+    public ProductGroupingService groupingService() {
+    	return new ProductGroupingService();
     }
 
 //    @Bean
@@ -119,7 +127,7 @@ public class JobConfig {
     		StepBuilderFactory stepBuilderFactory, 
     		CustomSkipListener skipListener, 
     		ItemProcessor<Product, Product> productProcessor,
-    		ReaderExhaustedWrapper<Product> wrapper) {
+    		ReaderExhaustedWrapper wrapper) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(3) // HERE
 //                .reader(reader()) // HERE
