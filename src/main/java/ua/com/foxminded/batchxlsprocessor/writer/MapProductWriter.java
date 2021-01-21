@@ -32,4 +32,7 @@ public class MapProductWriter implements ItemWriter<Product> {
 //    public Map<String, Double> getProductSummary() {
 //        return productSummary;
 //    }
+    
+    
+//    LOGGER.info("{} - {}", entry.getKey(), entry.getValue());
 }

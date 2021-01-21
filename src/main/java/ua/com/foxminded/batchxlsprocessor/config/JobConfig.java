@@ -1,14 +1,12 @@
 package ua.com.foxminded.batchxlsprocessor.config;
 
-import org.springframework.batch.core.ItemProcessListener;
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.SkipListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.core.step.item.ChunkMonitor;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -26,10 +24,11 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
+import ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener;
 import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
-import ua.com.foxminded.batchxlsprocessor.listener.ProductProcessListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
+import ua.com.foxminded.batchxlsprocessor.writer.ProductLogWriter;
 
 @Configuration
 @EnableBatchProcessing
@@ -51,19 +50,24 @@ public class JobConfig {
     
     //HERE
     @Bean
+    @StepScope
     public SingleItemPeekableItemReader<Product> peekItemReader() {
     	SingleItemPeekableItemReader<Product> reader = new SingleItemPeekableItemReader<>();
     	reader.setDelegate(reader());
     	return reader;
     }
     
-    //NOT HERE
-    
+    //HERE
+    @Bean
+    public ItemWriter<Product> productLogWriter() {
+    	return new ProductLogWriter();
+    }
     
     //HERE
     @Bean
-    public ItemProcessor<Product, Product> processor(SingleItemPeekableItemReader<Product> itemReader) {
-    	return new ProductProcessor(itemReader, chunkMonitor());
+    public ItemProcessor<Product, Product> productProcessor() {
+    	
+    	return new ProductProcessor(peekItemReader(), productLogWriter());
     }
 
     @Bean
@@ -85,12 +89,12 @@ public class JobConfig {
         return validatingItemProcessor;
     }
     
-    // HERE
-    @Bean
-    public ItemProcessListener<Product, Product> processListener() {
-    	ItemProcessListener<Product, Product> processListener = new ProductProcessListener();
-    	return processListener;
-    }
+    // HERE. WHY?
+//    @Bean
+//    public ItemProcessListener<Product, Product> processListener() {
+//    	ItemProcessListener<Product, Product> processListener = new ProductProcessListener();
+//    	return processListener;
+//    }
 
     @Bean
     public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
@@ -103,32 +107,30 @@ public class JobConfig {
                 .build();
     }
     
-    //HERE
-    @Bean
-    public ChunkMonitor chunkMonitor() {
-    	ChunkMonitor chunkMonitor = new ChunkMonitor();
-		chunkMonitor.registerItemStream(peekItemReader());
-		return chunkMonitor;
-    }
+    //HERE. REMOVE?
+//    @Bean
+//    public ChunkMonitor chunkMonitor() {
+//    	ChunkMonitor chunkMonitor = new ChunkMonitor();
+//		chunkMonitor.registerItemStream(peekItemReader());
+//		return chunkMonitor;
+//    }
 
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory,
-                      ItemWriter<Product> mapProductWriter,
-                      SkipListener<Product, Product> skipListener, 
-                      ItemProcessListener<Product, Product> processListener /* HERE */) {
+    public Step step1(StepBuilderFactory stepBuilderFactory, CustomSkipListener skipListener) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(3) // HERE
 //                .reader(reader()) // HERE
                 .reader(peekItemReader())
 //                .processor(validatingItemProcessor()) //HERE
-                .processor(processor(peekItemReader()))
-                .writer(mapProductWriter)
+                .processor(productProcessor())
+//                .writer(mapProductWriter) HERE
+                .writer(productLogWriter())
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
                 .skip(ValidationException.class)
                 .skipLimit(SKIP_LIMIT)
                 .listener(skipListener)
-                .listener(processListener)
+//                .listener(processListener)
                 .build();
     }
 }
