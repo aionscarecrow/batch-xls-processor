@@ -22,9 +22,10 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        Set<Map.Entry<String, Double>> entries = mapProductWriter.getProductSummary().entrySet();
-        for (Map.Entry<String, Double> entry : entries) {
-            LOGGER.info("{} - {}", entry.getKey(), entry.getValue());
-        }
+    	// HERE
+//        Set<Map.Entry<String, Double>> entries = mapProductWriter.getProductSummary().entrySet();
+//        for (Map.Entry<String, Double> entry : entries) {
+//            LOGGER.info("{} - {}", entry.getKey(), entry.getValue());
+//        }
     }
 }
