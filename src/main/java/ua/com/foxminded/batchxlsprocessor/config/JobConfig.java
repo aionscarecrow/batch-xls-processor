@@ -78,9 +78,7 @@ public class JobConfig {
 
     @Bean
     public ValidatingItemProcessor<Product> validatingItemProcessor() {
-        ValidatingItemProcessor<Product> validatingItemProcessor = new ValidatingItemProcessor<>(springValidator());
-        validatingItemProcessor.setFilter(false);
-        return validatingItemProcessor;
+        return new ValidatingItemProcessor<>(springValidator());
     }
 
     @Bean
