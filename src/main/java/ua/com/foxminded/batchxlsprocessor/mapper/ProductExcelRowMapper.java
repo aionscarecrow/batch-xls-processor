@@ -2,9 +2,11 @@ package ua.com.foxminded.batchxlsprocessor.mapper;
 
 import org.springframework.batch.item.excel.RowMapper;
 import org.springframework.batch.item.excel.support.rowset.RowSet;
+import org.springframework.stereotype.Component;
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
 import ua.com.foxminded.batchxlsprocessor.exception.MissingDataException;
 
+@Component
 public class ProductExcelRowMapper implements RowMapper<Product> {
 
     @Override

@@ -1,45 +1,63 @@
 package ua.com.foxminded.batchxlsprocessor.config;
 
 import org.springframework.batch.core.Job;
-import org.springframework.batch.core.SkipListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
+import ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener;
 import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
+import ua.com.foxminded.batchxlsprocessor.writer.MapProductWriter;
 
 @Configuration
 @EnableBatchProcessing
 public class JobConfig {
 
+    private static final int CHUNK_SIZE = 100;
     private static final int SKIP_LIMIT = 300;
+
+    @Autowired
+    private JobBuilderFactory jobBuilderFactory;
+
+    @Autowired
+    private StepBuilderFactory stepBuilderFactory;
+
+    @Autowired
+    private ProductExcelRowMapper mapper;
+
+    @Autowired
+    private MapProductWriter writer;
+
+    @Autowired
+    private CustomSkipListener skipListener;
+
+    @Autowired
+    private JobCompletionNotificationListener jobCompletionListener;
 
     @Value("${file.input}")
     private String fileInput;
 
     @Bean
-    public ItemReader<Product> reader() {
+    public PoiItemReader<Product> xlsReader() {
         PoiItemReader<Product> reader = new PoiItemReader<>();
         reader.setLinesToSkip(1);
         reader.setResource(new ClassPathResource(fileInput));
-        reader.setRowMapper(new ProductExcelRowMapper());
+        reader.setRowMapper(mapper);
         return reader;
     }
 
@@ -56,32 +74,26 @@ public class JobConfig {
     }
 
     @Bean
-    public ItemProcessor<Product, Product> validatingItemProcessor() {
-        ValidatingItemProcessor<Product> validatingItemProcessor = new ValidatingItemProcessor<>(springValidator());
-        validatingItemProcessor.setFilter(false);
-        return validatingItemProcessor;
+    public ValidatingItemProcessor<Product> validatingItemProcessor() {
+        return new ValidatingItemProcessor<>(springValidator());
     }
 
     @Bean
-    public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
-                   JobCompletionNotificationListener listener) {
+    public Job job() {
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
-                .listener(listener)
-                .flow(step1)
-                .end()
+                .listener(jobCompletionListener)
+                .start(getProductSummary())
                 .build();
     }
 
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory,
-                      ItemWriter<Product> mapProductWriter,
-                      SkipListener<Product, Product> skipListener) {
-        return stepBuilderFactory.get("step1")
-                .<Product, Product> chunk(1)
-                .reader(reader())
+    public Step getProductSummary() {
+        return stepBuilderFactory.get("getProductSummary")
+                .<Product, Product> chunk(CHUNK_SIZE)
+                .reader(xlsReader())
                 .processor(validatingItemProcessor())
-                .writer(mapProductWriter)
+                .writer(writer)
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
                 .skip(ValidationException.class)
