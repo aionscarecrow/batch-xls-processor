@@ -5,13 +5,14 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemStream;
+import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.AbstractApplicationContext;
 
 /**
@@ -25,7 +26,7 @@ import org.springframework.context.support.AbstractApplicationContext;
  * 
  * @author Michael R. Lange <michael.r.lange@langmi.de>
  */
-public class ReaderExhaustedWrapper<T> implements ItemReader<T> {
+public class ReaderExhaustedWrapper<T> implements ItemReader<T>, ItemStream {
 
     private ItemReader<T> delegate;
     private T nextItem = null;
@@ -47,7 +48,7 @@ public class ReaderExhaustedWrapper<T> implements ItemReader<T> {
 
 	    @Override
     public T read() throws Exception {
-    	log.info("read() called");
+//    	log.info("read() called");
     	
     	if(!this.exhausted) {
     		T returnItem = null;
@@ -99,4 +100,25 @@ public class ReaderExhaustedWrapper<T> implements ItemReader<T> {
     public void setDelegate(ItemReader<T> delegate) {
         this.delegate = delegate;
     }
+
+	@Override
+	public void open(ExecutionContext executionContext) throws ItemStreamException {
+		log.info("Opening");
+		((ItemStream)delegate).open(executionContext);
+		
+	}
+
+	@Override
+	public void update(ExecutionContext executionContext) throws ItemStreamException {
+		log.info("Updating");
+		((ItemStream)delegate).update(executionContext);
+		
+	}
+
+	@Override
+	public void close() throws ItemStreamException {
+		log.info("Closing");
+		((ItemStream)delegate).close();
+		
+	}
 }

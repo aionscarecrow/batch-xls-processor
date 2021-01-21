@@ -25,7 +25,7 @@ public class CustomSkipListener implements SkipListener<Product, Product> {
 
     @Override
     public void onSkipInWrite(Product o, Throwable throwable) {
-    	System.out.println("Writing skipped <<<");
+    	LOGGER.info("Writing skipped <<<");
     }
 
     @Override

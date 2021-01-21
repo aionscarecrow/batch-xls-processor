@@ -11,7 +11,7 @@ import ua.com.foxminded.batchxlsprocessor.writer.MapProductWriter;
 import java.util.Map;
 import java.util.Set;
 
-@Component
+//@Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
 
     private static final Logger LOGGER =

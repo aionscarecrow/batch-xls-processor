@@ -11,6 +11,7 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
+import org.springframework.batch.item.excel.mapping.PassThroughRowMapper;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
@@ -47,6 +48,7 @@ public class JobConfig {
         reader.setLinesToSkip(1);
         reader.setResource(new ClassPathResource(fileInput));
         reader.setRowMapper(new ProductExcelRowMapper());
+//        reader.setRowMapper(new PassThroughRowMapper());
         return reader;
     }
     
@@ -59,9 +61,9 @@ public class JobConfig {
 //    }
     
     @Bean("wrapper")
-    @StepScope
-    public ReaderExhaustedWrapper exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
-    	ReaderExhaustedWrapper wrapper =  new ReaderExhaustedWrapper();
+//    @StepScope
+    public ReaderExhaustedWrapper<Product> exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
+    	ReaderExhaustedWrapper<Product> wrapper =  new ReaderExhaustedWrapper<>();
     	wrapper.setDelegate(reader);
     	return wrapper;
     }
@@ -81,7 +83,7 @@ public class JobConfig {
     //HERE
     @Bean
     public ItemProcessor<Product, Product> productProcessor(
-    		@Qualifier("wrapper")ReaderExhaustedWrapper reader, 
+    		@Qualifier("wrapper")ReaderExhaustedWrapper<Product> reader, 
     		@Qualifier("logWriter")ItemWriter<Product> writer) {
 //    	return new ProductProcessor(exhaustedWrapper(reader()), productLogWriter());
     	return new ProductProcessor(reader, writer);
@@ -112,11 +114,11 @@ public class JobConfig {
     }
 
     @Bean
-    public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
-			JobCompletionNotificationListener listener) {
+    public Job job(Step step1, JobBuilderFactory jobBuilderFactory
+			/*JobCompletionNotificationListener listener*/) {
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
-                .listener(listener)
+//                .listener(listener)
                 .flow(step1)
                 .end()
                 .build();
@@ -127,7 +129,7 @@ public class JobConfig {
     		StepBuilderFactory stepBuilderFactory, 
     		CustomSkipListener skipListener, 
     		ItemProcessor<Product, Product> productProcessor,
-    		ReaderExhaustedWrapper wrapper) {
+    		ReaderExhaustedWrapper<Product> wrapper) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(3) // HERE
 //                .reader(reader()) // HERE

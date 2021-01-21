@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+//@Component
 public class MapProductWriter implements ItemWriter<Product> {
 // HERE
 //    private final Map<String, Double> productSummary = new HashMap<>();
