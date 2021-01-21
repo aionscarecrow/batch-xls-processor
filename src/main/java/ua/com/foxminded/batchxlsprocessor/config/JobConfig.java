@@ -5,18 +5,17 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
-import org.springframework.batch.item.support.SingleItemPeekableItemReader;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +27,7 @@ import ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener;
 import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
+import ua.com.foxminded.batchxlsprocessor.reader.ReaderExhaustedWrapper;
 import ua.com.foxminded.batchxlsprocessor.writer.ProductLogWriter;
 
 @Configuration
@@ -39,7 +39,7 @@ public class JobConfig {
     @Value("${file.input}")
     private String fileInput;
 
-    @Bean
+    @Bean("reader")
     public ItemReader<Product> reader() {
         PoiItemReader<Product> reader = new PoiItemReader<>();
         reader.setLinesToSkip(1);
@@ -49,25 +49,39 @@ public class JobConfig {
     }
     
     //HERE
-    @Bean
-    @StepScope
-    public SingleItemPeekableItemReader<Product> peekItemReader() {
-    	SingleItemPeekableItemReader<Product> reader = new SingleItemPeekableItemReader<>();
-    	reader.setDelegate(reader());
-    	return reader;
+//    @Bean
+//    public SingleItemPeekableItemReader<Product> peekItemReader() {
+//    	SingleItemPeekableItemReader<Product> reader = new SingleItemPeekableItemReader<>();
+//    	reader.setDelegate(reader());
+//    	return reader;
+//    }
+    
+    @Bean("wrapper")
+    public ReaderExhaustedWrapper<Product> exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
+    	ReaderExhaustedWrapper<Product> wrapper =  new ReaderExhaustedWrapper<>();
+    	wrapper.setDelegate(wrapper);
+    	return wrapper;
     }
     
+//    @Bean
+//    public ReaderExhaustedWrapper<Product> readerExhaustedWrapper() {
+//    	
+//    	return reader;
+//    }
+    
     //HERE
-    @Bean
+    @Bean("logWriter")
     public ItemWriter<Product> productLogWriter() {
     	return new ProductLogWriter();
     }
     
     //HERE
     @Bean
-    public ItemProcessor<Product, Product> productProcessor() {
-    	
-    	return new ProductProcessor(peekItemReader(), productLogWriter());
+    public ItemProcessor<Product, Product> productProcessor(
+    		@Qualifier("wrapper")ReaderExhaustedWrapper<Product> reader, 
+    		@Qualifier("logWriter")ItemWriter<Product> writer) {
+//    	return new ProductProcessor(exhaustedWrapper(reader()), productLogWriter());
+    	return new ProductProcessor(reader, writer);
     }
 
     @Bean
@@ -82,19 +96,12 @@ public class JobConfig {
         return springValidator;
     }
 
-    @Bean
+//    @Bean
     public ItemProcessor<Product, Product> validatingItemProcessor() {
         ValidatingItemProcessor<Product> validatingItemProcessor = new ValidatingItemProcessor<>(springValidator());
         validatingItemProcessor.setFilter(false);
         return validatingItemProcessor;
     }
-    
-    // HERE. WHY?
-//    @Bean
-//    public ItemProcessListener<Product, Product> processListener() {
-//    	ItemProcessListener<Product, Product> processListener = new ProductProcessListener();
-//    	return processListener;
-//    }
 
     @Bean
     public Job job(Step step1, JobBuilderFactory jobBuilderFactory,
@@ -107,22 +114,18 @@ public class JobConfig {
                 .build();
     }
     
-    //HERE. REMOVE?
-//    @Bean
-//    public ChunkMonitor chunkMonitor() {
-//    	ChunkMonitor chunkMonitor = new ChunkMonitor();
-//		chunkMonitor.registerItemStream(peekItemReader());
-//		return chunkMonitor;
-//    }
-
     @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory, CustomSkipListener skipListener) {
+    public Step step1(
+    		StepBuilderFactory stepBuilderFactory, 
+    		CustomSkipListener skipListener, 
+    		ItemProcessor<Product, Product> productProcessor,
+    		ReaderExhaustedWrapper<Product> wrapper) {
         return stepBuilderFactory.get("step1")
                 .<Product, Product> chunk(3) // HERE
 //                .reader(reader()) // HERE
-                .reader(peekItemReader())
+                .reader(wrapper)
 //                .processor(validatingItemProcessor()) //HERE
-                .processor(productProcessor())
+                .processor(productProcessor)
 //                .writer(mapProductWriter) HERE
                 .writer(productLogWriter())
                 .faultTolerant()

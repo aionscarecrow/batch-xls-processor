@@ -15,12 +15,12 @@ public class CustomSkipListener implements SkipListener<Product, Product> {
 
     @Override
     public void onSkipInRead(Throwable throwable) {
-//        if (throwable instanceof ExcelFileParseException) {
-//            ExcelFileParseException exception = (ExcelFileParseException) throwable;
-//            String filename = exception.getFilename();
-//            int rowNumber = exception.getRowNumber();
-//            LOGGER.error("{} Filename: {}. Row number: {}", throwable.getCause().getMessage(), filename, rowNumber + 1);
-//        }
+        if (throwable instanceof ExcelFileParseException) {
+            ExcelFileParseException exception = (ExcelFileParseException) throwable;
+            String filename = exception.getFilename();
+            int rowNumber = exception.getRowNumber();
+            LOGGER.error("{} Filename: {}. Row number: {}", throwable.getCause().getMessage(), filename, rowNumber + 1);
+        }
     }
 
     @Override

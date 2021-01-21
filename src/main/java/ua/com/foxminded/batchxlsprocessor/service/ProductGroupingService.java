@@ -19,7 +19,7 @@ public class ProductGroupingService {
 	private Map<String, Double> map = new HashMap<>();
 	
 	public void merge(Product product) {
-//		System.out.println("Retrieved for merge: " + product);
+		log.info("Merging in {}", product);
 		map.compute(product.getName(), (k, v) -> (v == null)? product.getQuantity() : v + product.getQuantity());
 	}
 	
