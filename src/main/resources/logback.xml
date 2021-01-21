@@ -2,6 +2,7 @@
   <property name="current.log.folder" value="log/current"/>
   <property name="archived.log.folder" value="log/archived"/>
   <property name="basic.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+  <property name="abbreviated.pattern" value="%d{HH:mm:ss.SSS} - %msg%n"/>
   <appender name="server" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/server.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -38,7 +39,7 @@
       <cleanHistoryOnStart>true</cleanHistoryOnStart>
     </rollingPolicy>
     <encoder>
-      <pattern>${basic.pattern}</pattern>
+      <pattern>${abbreviated.pattern}</pattern>
     </encoder>
   </appender>
   <appender name="jobCompletionListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -51,7 +52,7 @@
       <cleanHistoryOnStart>true</cleanHistoryOnStart>
     </rollingPolicy>
     <encoder>
-      <pattern>${basic.pattern}</pattern>
+      <pattern>${abbreviated.pattern}</pattern>
     </encoder>
   </appender>
   <logger name="org.springframework" level="info" additivity="false">
