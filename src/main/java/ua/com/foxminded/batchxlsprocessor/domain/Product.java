@@ -1,9 +1,11 @@
 package ua.com.foxminded.batchxlsprocessor.domain;
 
+import java.util.Objects;
+
 import javax.validation.constraints.Positive;
 
 public class Product {
-
+	
     private String name;
     @Positive
     private double quantity;
@@ -38,4 +40,22 @@ public class Product {
                 ", quantity=" + quantity +
                 '}';
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, quantity);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		return Objects.equals(name, other.name)
+				&& Double.doubleToLongBits(quantity) == Double.doubleToLongBits(other.quantity);
+	}
 }

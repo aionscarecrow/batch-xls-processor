@@ -2,6 +2,7 @@
   <property name="current.log.folder" value="log/current"/>
   <property name="archived.log.folder" value="log/archived"/>
   <property name="basic.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+  
   <appender name="server" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/server.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -15,6 +16,7 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
+  
   <appender name="spring" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/spring.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -28,6 +30,7 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
+  
   <appender name="skipListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/parsingErrors.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -41,6 +44,7 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
+  
   <appender name="jobCompletionListener" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/productSummary.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -54,16 +58,20 @@
       <pattern>${basic.pattern}</pattern>
     </encoder>
   </appender>
-  <logger name="org.springframework" level="info" additivity="false">
+  
+  <logger name="org.springframework" level="warn" additivity="false">
     <appender-ref ref="spring"/>
   </logger>
+  
   <logger name="ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener" level="info" additivity="false">
     <appender-ref ref="skipListener"/>
   </logger>
-  <logger name="ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener" level="info" additivity="false">
+  
+  <logger name="ua.com.foxminded.batchxlsprocessor.writer.ProductLogWriter" level="info" additivity="false">
     <appender-ref ref="jobCompletionListener"/>
   </logger>
-  <root level="info">
+  
+  <root level="warn">
     <appender-ref ref="server"/>
   </root>
 </configuration>

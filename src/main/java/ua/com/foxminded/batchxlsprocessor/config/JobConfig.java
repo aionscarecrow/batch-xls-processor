@@ -11,7 +11,6 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.excel.ExcelFileParseException;
-import org.springframework.batch.item.excel.mapping.PassThroughRowMapper;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
 import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
@@ -21,15 +20,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import ua.com.foxminded.batchxlsprocessor.domain.Product;
 import ua.com.foxminded.batchxlsprocessor.listener.CustomSkipListener;
-import ua.com.foxminded.batchxlsprocessor.listener.JobCompletionNotificationListener;
 import ua.com.foxminded.batchxlsprocessor.mapper.ProductExcelRowMapper;
 import ua.com.foxminded.batchxlsprocessor.processor.ProductProcessor;
-import ua.com.foxminded.batchxlsprocessor.reader.ReaderExhaustedWrapper;
+import ua.com.foxminded.batchxlsprocessor.reader.ExhaustedAwareItemReaderWrapper;
 import ua.com.foxminded.batchxlsprocessor.service.ProductGroupingService;
 import ua.com.foxminded.batchxlsprocessor.writer.ProductLogWriter;
 
@@ -44,58 +43,40 @@ public class JobConfig {
 
     @Bean("reader")
     public ItemReader<Product> reader() {
+    	
         PoiItemReader<Product> reader = new PoiItemReader<>();
         reader.setLinesToSkip(1);
         reader.setResource(new ClassPathResource(fileInput));
         reader.setRowMapper(new ProductExcelRowMapper());
-//        reader.setRowMapper(new PassThroughRowMapper());
         return reader;
     }
     
-    //HERE
-//    @Bean
-//    public SingleItemPeekableItemReader<Product> peekItemReader() {
-//    	SingleItemPeekableItemReader<Product> reader = new SingleItemPeekableItemReader<>();
-//    	reader.setDelegate(reader());
-//    	return reader;
-//    }
-    
-    @Bean("wrapper")
-//    @StepScope
-    public ReaderExhaustedWrapper<Product> exhaustedWrapper(@Qualifier("reader") ItemReader<Product> reader) {
-    	ReaderExhaustedWrapper<Product> wrapper =  new ReaderExhaustedWrapper<>();
+    @Bean("readerWrapper")
+    @StepScope
+    public ExhaustedAwareItemReaderWrapper<Product> exhaustedWrapper(
+    		@Qualifier("reader") ItemReader<Product> reader) {
+    	
+    	ExhaustedAwareItemReaderWrapper<Product> wrapper = 
+    			new ExhaustedAwareItemReaderWrapper<>();
     	wrapper.setDelegate(reader);
     	return wrapper;
     }
     
-//    @Bean
-//    public ReaderExhaustedWrapper<Product> readerExhaustedWrapper() {
-//    	
-//    	return reader;
-//    }
-    
-    //HERE
     @Bean("logWriter")
+    @StepScope
     public ItemWriter<Product> productLogWriter() {
     	return new ProductLogWriter();
     }
     
-    //HERE
-    @Bean
-    public ItemProcessor<Product, Product> productProcessor(
-    		@Qualifier("wrapper")ReaderExhaustedWrapper<Product> reader, 
-    		@Qualifier("logWriter")ItemWriter<Product> writer) {
-//    	return new ProductProcessor(exhaustedWrapper(reader()), productLogWriter());
-    	return new ProductProcessor(reader, writer);
-    }
 
     @Bean
     public org.springframework.validation.Validator validator() {
         return new LocalValidatorFactoryBean();
     }
 
-    @Bean
-    public Validator<Product> springValidator() {
+    @Bean("batchValidator")
+    public Validator<Product> batchValidator() {
+    	
         SpringValidator<Product> springValidator = new SpringValidator<>();
         springValidator.setValidator(validator());
         return springValidator;
@@ -105,20 +86,26 @@ public class JobConfig {
     public ProductGroupingService groupingService() {
     	return new ProductGroupingService();
     }
-
-//    @Bean
-    public ItemProcessor<Product, Product> validatingItemProcessor() {
-        ValidatingItemProcessor<Product> validatingItemProcessor = new ValidatingItemProcessor<>(springValidator());
-        validatingItemProcessor.setFilter(false);
-        return validatingItemProcessor;
+    
+    @Bean
+    @Lazy
+    public ItemProcessor<Product, Product> productProcessor(
+    		@Qualifier("readerWrapper")ExhaustedAwareItemReaderWrapper<Product> reader, 
+    		@Qualifier("logWriter")ItemWriter<Product> writer,
+    		@Qualifier("batchValidator")Validator<Product> batchValidator
+    		) {
+    	
+    	ValidatingItemProcessor<Product> processor = 
+    			new ProductProcessor(reader, writer, batchValidator);
+    	processor.setFilter(false);
+    	return processor;
     }
 
     @Bean
-    public Job job(Step step1, JobBuilderFactory jobBuilderFactory
-			/*JobCompletionNotificationListener listener*/) {
+    public Job job(Step step1, JobBuilderFactory jobBuilderFactory) {
+    	
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
-//                .listener(listener)
                 .flow(step1)
                 .end()
                 .build();
@@ -129,21 +116,18 @@ public class JobConfig {
     		StepBuilderFactory stepBuilderFactory, 
     		CustomSkipListener skipListener, 
     		ItemProcessor<Product, Product> productProcessor,
-    		ReaderExhaustedWrapper<Product> wrapper) {
+    		ExhaustedAwareItemReaderWrapper<Product> wrapper) {
+    	
         return stepBuilderFactory.get("step1")
-                .<Product, Product> chunk(3) // HERE
-//                .reader(reader()) // HERE
+                .<Product, Product> chunk(3)
                 .reader(wrapper)
-//                .processor(validatingItemProcessor()) //HERE
                 .processor(productProcessor)
-//                .writer(mapProductWriter) HERE
                 .writer(productLogWriter())
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)
                 .skip(ValidationException.class)
                 .skipLimit(SKIP_LIMIT)
                 .listener(skipListener)
-//                .listener(processListener)
                 .build();
     }
 }

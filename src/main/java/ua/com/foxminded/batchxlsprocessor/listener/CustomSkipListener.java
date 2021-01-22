@@ -19,17 +19,18 @@ public class CustomSkipListener implements SkipListener<Product, Product> {
             ExcelFileParseException exception = (ExcelFileParseException) throwable;
             String filename = exception.getFilename();
             int rowNumber = exception.getRowNumber();
-            LOGGER.error("{} Filename: {}. Row number: {}", throwable.getCause().getMessage(), filename, rowNumber + 1);
+            LOGGER.error("{} Filename: {}. Row number: {}", 
+            		throwable.getCause().getMessage(), filename, rowNumber + 1);
         }
     }
 
     @Override
     public void onSkipInWrite(Product o, Throwable throwable) {
-    	LOGGER.info("Writing skipped <<<");
+    	LOGGER.error(throwable.getMessage(), throwable);
     }
 
     @Override
     public void onSkipInProcess(Product o, Throwable throwable) {
-        LOGGER.error(throwable.getMessage());
+        LOGGER.error(throwable.getMessage(), throwable);
     }
 }
