@@ -12,7 +12,7 @@ class ProductGroupingServiceTest {
     private final ProductGroupingService service = new ProductGroupingService();
 
     @Test
-    void merge() {
+    void whenInputsAreValidProducts_groupCorrectlyByName() {
         Product product1 = new Product("A", 12.5);
         Product product2 = new Product("A", 13.5);
         Product product3 = new Product("B", 13.5);
