@@ -3,7 +3,6 @@ package ua.com.foxminded.batchxlsprocessor.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -22,16 +21,13 @@ public class ProductGroupingService {
 	public void merge(Product product) {
 		if(LOG.isTraceEnabled())
 			LOG.trace("Merging in {}", product);
-		//TODO: NEEDS REFACTORING?
-		products.compute(product.getName(), (k, v) -> 
-			(Objects.isNull(v))? product.getQuantity() : v + product.getQuantity());
+		products.merge(product.getName(), product.getQuantity(), Double::sum);
 	}
 	
 	public List<Product> getGroupedResult() {
-		LOG.debug("Returning grouped result");
+		LOG.debug("Returning grouped result of {} entries", products.size());
 		return products.entrySet().stream()
 				.map(e -> new Product(e.getKey(), e.getValue()))
 				.collect(Collectors.toUnmodifiableList());
 	}
-
 }

@@ -2,7 +2,6 @@ package ua.com.foxminded.batchxlsprocessor.processor;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +26,7 @@ public class ProductProcessor extends ValidatingItemProcessor<Product> implement
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ProductProcessor.class);
 	
+	
 	public ProductProcessor(ExhaustedAwareItemReaderWrapper<Product> itemReader, 
 			ItemWriter<Product> productLogWriter, Validator<Product> validator) {
 		
@@ -38,13 +38,14 @@ public class ProductProcessor extends ValidatingItemProcessor<Product> implement
 
 	@Override
 	public Product process(Product item) {
-		LOG.trace("Process called with: [{}]" + item);
 		
-		super.process(item);
-		groupingService.merge(item);
+		if(LOG.isTraceEnabled())
+			LOG.trace("Process called with: [{}]" + item);
+		
+		groupingService.merge(validate(item));
 		
 		if(itemReader.isExhausted()) {
-			LOG.debug("Delegate item reader exhausted");
+			LOG.debug("Delegate ItemReader exhausted");
 			feedWriter(groupingService.getGroupedResult());
 		}
 		
@@ -52,20 +53,26 @@ public class ProductProcessor extends ValidatingItemProcessor<Product> implement
 	}
 	
 	
+	private Product validate(Product item) {
+		return super.process(item);
+	}
+	
+	
 	private void feedWriter(List<Product> groupedProducts) {
 		LOG.debug("Feeding {} items to writer", groupedProducts.size());
-		// TODO: UGLUY. NEEDS REFACTORING
-		BiConsumer<List<Product>, ItemWriter<Product>> feed = (list, writer) -> {
-			try {
-				writer.write(list);
-			} catch(Exception e) {
-				throw new ItemWriteOutException("Failed to feed item to writer", e);
-			}
-		};
 		
 		groupedProducts.stream()
 			.map(Collections::<Product>singletonList)
-			.forEach(list -> feed.accept(list, this.itemWriter));
+			.forEach(this::feed);
+	}
+	
+	
+	private void feed(List<Product> items) {
+		try {
+			this.itemWriter.write(items);
+		} catch(Exception e) {
+			throw new ItemWriteOutException("Failed to feed item to writer", e);
+		}
 	}
 	
 

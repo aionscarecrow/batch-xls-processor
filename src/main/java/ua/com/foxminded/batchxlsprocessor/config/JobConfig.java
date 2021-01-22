@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -51,6 +50,7 @@ public class JobConfig {
         return reader;
     }
     
+    
     @Bean("readerWrapper")
     @StepScope
     public ExhaustedAwareItemReaderWrapper<Product> exhaustedWrapper(
@@ -61,6 +61,7 @@ public class JobConfig {
     	wrapper.setDelegate(reader);
     	return wrapper;
     }
+    
     
     @Bean("logWriter")
     @StepScope
@@ -73,6 +74,7 @@ public class JobConfig {
     public org.springframework.validation.Validator validator() {
         return new LocalValidatorFactoryBean();
     }
+    
 
     @Bean("batchValidator")
     public Validator<Product> batchValidator() {
@@ -82,13 +84,15 @@ public class JobConfig {
         return springValidator;
     }
     
+    
     @Bean
     public ProductGroupingService groupingService() {
     	return new ProductGroupingService();
     }
     
+    
     @Bean
-    @Lazy
+    @StepScope
     public ItemProcessor<Product, Product> productProcessor(
     		@Qualifier("readerWrapper")ExhaustedAwareItemReaderWrapper<Product> reader, 
     		@Qualifier("logWriter")ItemWriter<Product> writer,
@@ -97,9 +101,11 @@ public class JobConfig {
     	
     	ValidatingItemProcessor<Product> processor = 
     			new ProductProcessor(reader, writer, batchValidator);
+    	
     	processor.setFilter(false);
     	return processor;
     }
+    
 
     @Bean
     public Job job(Step step1, JobBuilderFactory jobBuilderFactory) {
@@ -110,6 +116,7 @@ public class JobConfig {
                 .end()
                 .build();
     }
+    
     
     @Bean
     public Step step1(
