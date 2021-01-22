@@ -19,7 +19,8 @@ public class CustomSkipListener implements SkipListener<Product, Product> {
             ExcelFileParseException exception = (ExcelFileParseException) throwable;
             String filename = exception.getFilename();
             int rowNumber = exception.getRowNumber();
-            LOGGER.error("{} Filename: {}. Row number: {}", throwable.getCause().getMessage(), filename, rowNumber + 1);
+            LOGGER.error("{} Filename: {}. Row number: {}",
+                    throwable.getCause().getMessage(), filename, rowNumber + 1);
         }
     }
 

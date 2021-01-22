@@ -24,9 +24,11 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        service.getProductSummaryAsList()
-                .forEach(product -> LOGGER.info("{} - {}",
-                        product.getName(),
-                        BigDecimal.valueOf(product.getQuantity()).setScale(1, RoundingMode.HALF_UP)));
+        service.getProductSummary()
+                .forEach((name, quantity) -> LOGGER.info("{} - {}", name, round(quantity)));
+    }
+
+    private BigDecimal round(double d) {
+        return BigDecimal.valueOf(d).setScale(1, RoundingMode.HALF_UP);
     }
 }

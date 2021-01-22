@@ -2,7 +2,7 @@
   <property name="current.log.folder" value="log/current"/>
   <property name="archived.log.folder" value="log/archived"/>
   <property name="basic.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
-  <property name="abbreviated.pattern" value="%d{HH:mm:ss.SSS} - %msg%n"/>
+  <property name="abbreviated.pattern" value="%msg%n"/>
   <appender name="server" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${current.log.folder}/server.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">

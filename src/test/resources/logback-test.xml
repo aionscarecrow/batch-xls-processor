@@ -17,14 +17,14 @@
     </encoder>
   </appender>
   <appender name="skipListener" class="ch.qos.logback.core.FileAppender">
-    <file>${current.log.folder}/parsingErrors.log</file>
+    <file>${current.log.folder}/errors.log</file>
     <append>false</append>
     <encoder>
       <pattern>${abbreviated.pattern}</pattern>
     </encoder>
   </appender>
   <appender name="jobCompletionListener" class="ch.qos.logback.core.FileAppender">
-    <file>${current.log.folder}/productSummary.log</file>
+    <file>${current.log.folder}/result.log</file>
     <append>false</append>
     <encoder>
       <pattern>${abbreviated.pattern}</pattern>
