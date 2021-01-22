@@ -16,7 +16,6 @@ import org.springframework.batch.item.validator.SpringValidator;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,30 +38,11 @@ public class JobConfig {
     private static final int CHUNK_SIZE = 100;
     private static final int SKIP_LIMIT = 300;
 
-    @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
-
-    @Autowired
-    private ProductExcelRowMapper mapper;
-
-    @Autowired
-    private ProductItemProcessor productItemProcessor;
-
-    @Autowired
-    private NoOperationItemWriter writer;
-
-    @Autowired
-    private CustomSkipListener skipListener;
-
-    @Autowired
-    private JobCompletionNotificationListener jobCompletionListener;
-
     @Bean
     @StepScope
-    public PoiItemReader<Product> xlsReader(@Value("#{jobParameters['file.input']}") String input) {
+    public PoiItemReader<Product> xlsReader(@Value("#{jobParameters['file.input']}") String input,
+                                            ProductExcelRowMapper mapper) {
+
         PoiItemReader<Product> reader = new PoiItemReader<>();
         reader.setLinesToSkip(1);
         reader.setResource(new ClassPathResource(input));
@@ -88,7 +68,7 @@ public class JobConfig {
     }
 
     @Bean
-    public CompositeItemProcessor<Product, Product> compositeItemProcessor() {
+    public CompositeItemProcessor<Product, Product> compositeItemProcessor(ProductItemProcessor productItemProcessor) {
         CompositeItemProcessor<Product, Product> compositeItermProcessor = new CompositeItemProcessor<>();
         List<ItemProcessor<Product, Product>> delegates = new ArrayList<>();
         delegates.add(validatingItemProcessor());
@@ -98,7 +78,10 @@ public class JobConfig {
     }
 
     @Bean
-    public Job job(Step getProductSummary) {
+    public Job job(JobBuilderFactory jobBuilderFactory,
+                   JobCompletionNotificationListener jobCompletionListener,
+                   Step getProductSummary) {
+
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(jobCompletionListener)
@@ -107,11 +90,16 @@ public class JobConfig {
     }
 
     @Bean
-    public Step getProductSummary(ItemReader<Product> xlsReader) {
+    public Step getProductSummary(StepBuilderFactory stepBuilderFactory,
+                                  ItemReader<Product> xlsReader,
+                                  CompositeItemProcessor<Product, Product> processor,
+                                  NoOperationItemWriter writer,
+                                  CustomSkipListener skipListener) {
+
         return stepBuilderFactory.get("getProductSummary")
                 .<Product, Product> chunk(CHUNK_SIZE)
                 .reader(xlsReader)
-                .processor(compositeItemProcessor())
+                .processor(processor)
                 .writer(writer)
                 .faultTolerant()
                 .skip(ExcelFileParseException.class)

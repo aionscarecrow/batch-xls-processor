@@ -30,12 +30,4 @@ public class Product {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", quantity=" + quantity +
-                '}';
-    }
 }

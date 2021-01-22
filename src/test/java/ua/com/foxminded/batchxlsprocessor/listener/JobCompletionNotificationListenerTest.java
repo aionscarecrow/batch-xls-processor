@@ -22,9 +22,9 @@ class JobCompletionNotificationListenerTest {
     private JobCompletionNotificationListener listener;
 
     @Test
-    void afterJob() {
+    void whenJobIsFinished_getProductSummaryFromProductGroupingService() {
         listener.afterJob(jobExecution);
 
-        verify(mockedService).getProductSummaryAsList();
+        verify(mockedService).getProductSummary();
     }
 }
