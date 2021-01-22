@@ -5,8 +5,10 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.excel.ExcelFileParseException;
 import org.springframework.batch.item.excel.poi.PoiItemReader;
 import org.springframework.batch.item.support.CompositeItemProcessor;
@@ -58,14 +60,12 @@ public class JobConfig {
     @Autowired
     private JobCompletionNotificationListener jobCompletionListener;
 
-    @Value("${file.input}")
-    private String fileInput;
-
     @Bean
-    public PoiItemReader<Product> xlsReader() {
+    @StepScope
+    public PoiItemReader<Product> xlsReader(@Value("#{jobParameters['file.input']}") String input) {
         PoiItemReader<Product> reader = new PoiItemReader<>();
         reader.setLinesToSkip(1);
-        reader.setResource(new ClassPathResource(fileInput));
+        reader.setResource(new ClassPathResource(input));
         reader.setRowMapper(mapper);
         return reader;
     }
@@ -98,19 +98,19 @@ public class JobConfig {
     }
 
     @Bean
-    public Job job() {
+    public Job job(Step getProductSummary) {
         return jobBuilderFactory.get("xlsProcessingJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(jobCompletionListener)
-                .start(getProductSummary())
+                .start(getProductSummary)
                 .build();
     }
 
     @Bean
-    public Step getProductSummary() {
+    public Step getProductSummary(ItemReader<Product> xlsReader) {
         return stepBuilderFactory.get("getProductSummary")
                 .<Product, Product> chunk(CHUNK_SIZE)
-                .reader(xlsReader())
+                .reader(xlsReader)
                 .processor(compositeItemProcessor())
                 .writer(writer)
                 .faultTolerant()
