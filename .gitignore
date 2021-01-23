@@ -87,3 +87,5 @@ nb-configuration.xml
 ## Misc
 ##############################
 log/
+message
+!spring-batch-excel-0.5.1.jar
